@@ -1,21 +1,19 @@
-import logo from '../../logo.svg';
-import { App, AppHeader, AppLogo, AppLink } from './styled';
+import { App, AppHeader, AppLink } from './styled';
 
 const Home = () => {
   return (
     <App>
       <AppHeader>
-        <AppLogo src={logo} alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Dino-War
         </p>
         <AppLink
-          href="URL"
+          href="#"
         >
           Battle!
         </AppLink>
         <AppLink
-          href="URL"
+          href="#"
         >
           About/How-To/Etc
         </AppLink>
