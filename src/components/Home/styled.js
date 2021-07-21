@@ -10,31 +10,20 @@ export const AppHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-`;
-
-export const AppLogo = styled.img`
-  height: 40vmin;
-  pointer-events: none;
-
-  @media (prefers-reduced-motion: no-preference) {
-    & {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  & p {
+    color: white;
+    font-size: calc(10px + 15vmin);
+    cursor: default;
+    letter-spacing: 2px;
   }
 `;
 
 export const AppLink = styled.a`
-  color: #61dafb;
+  color: #282c34;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
 `;

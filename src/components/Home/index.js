@@ -10,11 +10,14 @@ const Home = () => {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <AppLink
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="URL"
         >
-          Learn React
+          Battle!
+        </AppLink>
+        <AppLink
+          href="URL"
+        >
+          About/How-To/Etc
         </AppLink>
       </AppHeader>
     </App>
