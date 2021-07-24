@@ -24,15 +24,13 @@ export const Counters = styled.div`
 export const MainActionButton = styled.button`
   font-size: 2.5rem;
   font-family: inherit;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   border: 0;
   background: #333;
   padding: 0.25em;
   color: white;
   transition: background-color 0.25s ease;
+  z-index: 0;
 
   &:hover,
   &:focus {
@@ -42,15 +40,20 @@ export const MainActionButton = styled.button`
   }
 `;
 
-export const Legends = styled.div`
-  position: relative;
+export const Battlefield = styled.div`
   width: 100%;
-  top: 2rem;
+  flex: 1;
+  justify-self: center;
+  align-self: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 3em;
-  padding-bottom: 5em;
+  margin-bottom: 1.5em;
+  z-index: 0;
 `;
+
+export const PlayerBoard = styled.div``;
 
 export const VerticalDivider = styled.div`
   border-left: 3px solid black;
@@ -58,13 +61,15 @@ export const VerticalDivider = styled.div`
   left: 50%;
   height: 100%;
   transform: translateX(-50%);
-`
+`;
 
 export const StyledLevel = styled.main`
+  display: flex;
+  flex-direction: column;
   ${({ background }) =>
     background &&
     css`
-      background-image: url("data:image/svg+xml;utf8,${background}");
+      background-image: url(\"data:image/svg+xml;utf8,${background}\");
       background-size: cover;
       min-height: 100%;
     `}

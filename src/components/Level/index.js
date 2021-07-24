@@ -5,7 +5,7 @@ import {
   TeamName,
   Counters,
   MainActionButton,
-  Legends,
+  Battlefield,
   StyledLevel,
   VerticalDivider,
 } from './styled';
@@ -43,10 +43,10 @@ const Level = () => {
         <Counter store={redCountStore} color="var(--red)" />
         <Counter store={blueCountStore} color="var(--blue)" reversed />
       </Counters>
-      <Legends>
+      <Battlefield>
         <Legend color="var(--red)" />
         <Legend color="var(--blue)" reversed />
-      </Legends>
+      </Battlefield>
       <MainActionButton>Click here to battle!</MainActionButton>
     </StyledLevel>
   );
