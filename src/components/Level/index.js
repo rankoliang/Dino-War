@@ -7,6 +7,7 @@ import {
   MainActionButton,
   Legends,
   StyledLevel,
+  VerticalDivider,
 } from './styled';
 import Legend from '../Legend';
 import Counter from '../Counter';
@@ -25,7 +26,7 @@ const Level = () => {
       height: 3840,
       width: 2160,
       xColors: 'YlGn',
-      colorFunction: trianglify.colorFunctions.shadows()
+      colorFunction: trianglify.colorFunctions.shadows(),
     })
       .toSVGTree()
       .toString()
@@ -33,6 +34,7 @@ const Level = () => {
 
   return (
     <StyledLevel background={pattern}>
+      <VerticalDivider />
       <TeamNames>
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>

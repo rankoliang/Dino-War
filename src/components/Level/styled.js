@@ -24,7 +24,7 @@ export const Counters = styled.div`
 export const MainActionButton = styled.button`
   font-size: 2.5rem;
   font-family: inherit;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -43,14 +43,22 @@ export const MainActionButton = styled.button`
 `;
 
 export const Legends = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 2rem;
   display: flex;
   justify-content: space-between;
   padding: 0 3em;
+  padding-bottom: 5em;
 `;
+
+export const VerticalDivider = styled.div`
+  border-left: 3px solid black;
+  position: fixed;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+`
 
 export const StyledLevel = styled.main`
   ${({ background }) =>
@@ -58,6 +66,6 @@ export const StyledLevel = styled.main`
     css`
       background-image: url("data:image/svg+xml;utf8,${background}");
       background-size: cover;
-      height: 100%;
+      min-height: 100%;
     `}
 `;
