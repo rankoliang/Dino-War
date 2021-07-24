@@ -14,3 +14,8 @@ export const TeamName = styled.h2`
   text-align: center;
   font-size: 3em;
 `;
+
+export const Counters = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
