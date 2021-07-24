@@ -1,4 +1,5 @@
-import { App, AppHeader, AppLink } from './styled';
+import { App, AppHeader, AppLink, AppIcon, AppExtras } from './styled';
+import { FaArrowCircleLeft, FaCog, FaVolumeUp, FaBook } from "react-icons/fa";
 
 const Home = () => {
   return (
@@ -9,14 +10,37 @@ const Home = () => {
         </p>
         <AppLink
           href="#"
+          title="Battle!"
         >
           Level 1
         </AppLink>
-        <AppLink
+        <AppIcon
           href="#"
+          title="Previous Level"
         >
-          About/How-To/Etc
-        </AppLink>
+          <FaArrowCircleLeft />
+        </AppIcon>
+
+        <AppExtras>
+          <AppIcon
+            href="#"
+            title="Settings"
+          >
+            <FaCog />
+          </AppIcon>
+          <AppIcon
+            href="#"
+            title="Music"
+          >
+            <FaVolumeUp />
+          </AppIcon>
+          <AppIcon
+            href="#"
+            title="Instructions"
+          >
+            <FaBook />
+          </AppIcon>
+        </AppExtras>
       </AppHeader>
     </App>
   );
