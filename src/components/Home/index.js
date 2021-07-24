@@ -10,7 +10,7 @@ const Home = () => {
         <AppLink
           href="#"
         >
-          Battle!
+          Level 1
         </AppLink>
         <AppLink
           href="#"
