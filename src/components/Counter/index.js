@@ -34,15 +34,17 @@ const Counter = ({
         />
         <CounterInputs>
           <CounterButton
-            onClick={() => {
+            onClick={(event) => {
               inputRef.current.stepUp();
+              event.currentTarget.blur();
             }}
           >
             +
           </CounterButton>
           <CounterButton
-            onClick={() => {
+            onClick={(event) => {
               inputRef.current.stepDown();
+              event.currentTarget.blur();
             }}
           >
             -

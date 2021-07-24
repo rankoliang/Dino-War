@@ -31,13 +31,21 @@ export const CounterLabel = styled.h3`
   font-size: 1.5rem;
   font-weight: normal;
   margin: 0.5em 0;
-`
+`;
 
 export const StyledCounter = styled.div`
   display: flex;
   font-size: 5em;
   height: 1.5em;
   ${CounterButton} {
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      outline: none;
+      color: white;
+      background: ${({ color }) => color};
+    }
+
     ${({ reversed }) =>
       reversed
         ? css`
