@@ -26,14 +26,38 @@ export const AppHeader = styled.header`
 
 export const AppLink = styled.a`
   color: #fff;
+  font-size: calc(10px + 5vmin);
   text-decoration: none;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   background: var(--red);
-  padding: 10px 10px 5px;
+  padding: 12px 12px 3px;
   border-radius: 5px;
   margin-bottom: 15px;
-  & nth-child(1) {
-    color: green;
+  transition: all 0.2s;
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+export const AppIcon = styled.a`
+  color: var(--red);
+  font-size: calc(10px + 6vmin);
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+  transition: all 0.2s;
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+export const AppExtras = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  margin-top: 50px;
+  & ${AppIcon}:nth-child(2) {
+    display: block;
+    position: relative;
+    top: 20px;
   }
 `;
