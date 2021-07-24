@@ -13,6 +13,7 @@ export const TeamName = styled.h2`
   background: ${({ background }) => background || 'white'};
   text-align: center;
   font-size: 3em;
+  font-weight: normal;
 `;
 
 export const Counters = styled.div`

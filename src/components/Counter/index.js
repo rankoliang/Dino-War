@@ -23,7 +23,7 @@ const Counter = ({
   return (
     <div>
       <StyledCounter color={color} reversed={reversed}>
-        <StyledRexIcon as={RexIcon} alt="trex icon" fill={color} />
+        <StyledRexIcon as={RexIcon} alt="tyrannosaurus rex icon" fill={color} />
         <input
           type="number"
           min="0"
