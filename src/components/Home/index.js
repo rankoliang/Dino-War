@@ -8,12 +8,20 @@ const Home = () => {
           Dino-War
         </p>
         <AppLink
+<<<<<<< HEAD
           href="#"
+=======
+          href="URL"
+>>>>>>> main
         >
           Battle!
         </AppLink>
         <AppLink
+<<<<<<< HEAD
           href="#"
+=======
+          href="URL"
+>>>>>>> main
         >
           About/How-To/Etc
         </AppLink>
