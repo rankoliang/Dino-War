@@ -1,6 +1,13 @@
 import { useReducer } from 'react';
 import { useParams } from 'react-router-dom';
-import { TeamNames, TeamName, Counters, MainActionButton } from './styled';
+import {
+  TeamNames,
+  TeamName,
+  Counters,
+  MainActionButton,
+  Legends,
+} from './styled';
+import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import './Level.css';
@@ -20,6 +27,10 @@ const Level = () => {
         <Counter store={redCountStore} color="var(--red)" />
         <Counter store={blueCountStore} color="var(--blue)" reversed />
       </Counters>
+      <Legends>
+        <Legend color="var(--red)" />
+        <Legend color="var(--blue)" reversed />
+      </Legends>
       <MainActionButton>Click here to battle!</MainActionButton>
     </main>
   );

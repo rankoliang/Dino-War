@@ -40,3 +40,14 @@ export const MainActionButton = styled.button`
     background: #222;
   }
 `;
+
+export const Legends = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3em;
+  z-index: -1;
+`;
