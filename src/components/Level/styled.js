@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const TeamNames = styled.div`
   width: 100%;
@@ -26,6 +26,7 @@ export const MainActionButton = styled.button`
   font-family: inherit;
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   border: 0;
   background: #333;
@@ -49,5 +50,14 @@ export const Legends = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 3em;
-  z-index: -1;
+`;
+
+export const StyledLevel = styled.main`
+  ${({ background }) =>
+    background &&
+    css`
+      background-image: url("data:image/svg+xml;utf8,${background}");
+      background-size: cover;
+      height: 100%;
+    `}
 `;
