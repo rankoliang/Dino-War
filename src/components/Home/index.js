@@ -1,10 +1,23 @@
+import { useEffect } from "react";
+import Rules from "./rules";
 import { App, AppHeader, AppLink, AppIcon, AppExtras } from './styled';
 import { FaArrowCircleLeft, FaCog, FaVolumeUp, FaBook } from "react-icons/fa";
 
 const Home = () => {
+
+  useEffect(() => {
+    const ruleBtn = document.querySelector(".rules");
+    const ruleModal = document.querySelector("#modal");
+
+    ruleBtn.addEventListener("click", () => {
+      ruleModal.style.display = "block";
+    })
+  })
+
   return (
     <App>
       <AppHeader>
+        <Rules />
         <p>
           Dino-War
         </p>
@@ -37,6 +50,7 @@ const Home = () => {
           <AppIcon
             href="#"
             title="Instructions"
+            className="rules"
           >
             <FaBook />
           </AppIcon>
