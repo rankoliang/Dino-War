@@ -1,9 +1,21 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Rules from "./rules";
+import trianglify from 'trianglify';
 import { App, AppHeader, AppLink, AppIcon, AppExtras } from './styled';
 import { FaArrowCircleLeft, FaCog, FaVolumeUp, FaBook } from "react-icons/fa";
 
 const Home = () => {
+  const [pattern] = useState(
+    trianglify({
+      cellSize: 200,
+      height: 3840,
+      width: 2160,
+      xColors: 'YlGn',
+      colorFunction: trianglify.colorFunctions.shadows(),
+    })
+      .toSVGTree()
+      .toString()
+  );
 
   useEffect(() => {
     const ruleBtn = document.querySelector(".rules");
@@ -15,7 +27,7 @@ const Home = () => {
   }, [])
 
   return (
-    <App>
+    <App background={pattern}>
       <AppHeader>
         <Rules />
         <p className="title">
@@ -48,7 +60,6 @@ const Home = () => {
             <FaVolumeUp />
           </AppIcon>
           <AppIcon
-            href="#"
             title="Instructions"
             className="rules"
           >
