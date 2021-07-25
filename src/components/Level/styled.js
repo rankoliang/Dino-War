@@ -53,7 +53,30 @@ export const Battlefield = styled.div`
   z-index: 0;
 `;
 
-export const PlayerBoard = styled.div``;
+export const TeamBoard = styled.div`
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  align-content: space-around;
+  margin: 0 2em;
+  margin-bottom: 3em;
+  ${({ reversed }) =>
+    reversed &&
+    css`
+      transform: scaleX(-1);
+    `}
+`;
+
+export const Dino = styled.svg`
+  width: 6rem;
+  height: 6rem;
+
+  circle[fill='#edebdc'] {
+    display: none;
+  }
+`;
 
 export const VerticalDivider = styled.div`
   border-left: 3px solid black;

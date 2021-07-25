@@ -8,12 +8,20 @@ import {
   Battlefield,
   StyledLevel,
   VerticalDivider,
+  Dino,
+  TeamBoard,
 } from './styled';
 import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
+import { ReactComponent as OnePointRedDino } from '../../icons/dinosaurs/red-one-point.svg';
+import { ReactComponent as OnePointBlueDino } from '../../icons/dinosaurs/blue-one-point.svg';
 import './Level.css';
+
+const randBetween = (low, high) => {
+  return Math.floor(low + Math.random() * (high - low));
+};
 
 const Level = () => {
   const { difficulty } = useParams();
@@ -32,6 +40,38 @@ const Level = () => {
       .toString()
   );
 
+  const [redDinos] = useState(
+    new Array(10).fill(undefined).map(() => {
+      return {
+        Component: OnePointRedDino,
+        style: {
+          transform: `
+            scaleX(-1)
+            translate(
+              ${randBetween(-25, 25)}%,
+              ${randBetween(-100, 100)}%
+            )`,
+        },
+      };
+    })
+  );
+
+  const [blueDinos] = useState(
+    new Array(10).fill(undefined).map(() => {
+      return {
+        Component: OnePointBlueDino,
+        style: {
+          transform: `
+            scaleX(-1)
+            translate(
+              ${randBetween(-25, 25)}%,
+              ${randBetween(-100, 100)}%
+            )`,
+        },
+      };
+    })
+  );
+
   return (
     <StyledLevel background={pattern}>
       <VerticalDivider />
@@ -45,6 +85,16 @@ const Level = () => {
       </Counters>
       <Battlefield>
         <Legend color="var(--red)" />
+        <TeamBoard>
+          {redDinos.map(({ Component, style }, i) => (
+            <Dino as={Component} style={style} key={i} />
+          ))}
+        </TeamBoard>
+        <TeamBoard reversed>
+          {blueDinos.map(({ Component, style }, i) => (
+            <Dino as={Component} style={style} key={i} />
+          ))}
+        </TeamBoard>
         <Legend color="var(--blue)" reversed />
       </Battlefield>
       <MainActionButton>Click here to battle!</MainActionButton>
