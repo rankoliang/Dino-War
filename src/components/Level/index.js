@@ -15,47 +15,60 @@ import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
-import { ReactComponent as OnePointRedDino } from '../../icons/dinosaurs/red-one-point.svg';
-import { ReactComponent as TwoPointsRedDino } from '../../icons/dinosaurs/red-two-points.svg';
-import { ReactComponent as ThreePointsRedDino } from '../../icons/dinosaurs/red-three-points.svg';
-import { ReactComponent as FivePointsRedDino } from '../../icons/dinosaurs/red-five-points.svg';
-import { ReactComponent as TenPointsRedDino } from '../../icons/dinosaurs/red-ten-points.svg';
-
-import { ReactComponent as OnePointBlueDino } from '../../icons/dinosaurs/blue-one-point.svg';
-import { ReactComponent as TwoPointsBlueDino } from '../../icons/dinosaurs/blue-two-points.svg';
-import { ReactComponent as ThreePointsBlueDino } from '../../icons/dinosaurs/blue-three-points.svg';
-import { ReactComponent as FivePointsBlueDino } from '../../icons/dinosaurs/blue-five-points.svg';
-import { ReactComponent as TenPointsBlueDino } from '../../icons/dinosaurs/blue-ten-points.svg';
+import { level1, level2, level3, level4, level5, level6, level7, level8, level9, level10 } from "./staticLevels";
 import './Level.css';
-
-const level1 = {
-  pointGoal: 10,
-  teamRed: {
-    answer: 8,
-    onField: [
-    {dino:OnePointRedDino, qty:1, value:1},
-    {dino:TwoPointsRedDino, qty:1, value:2},
-    {dino:FivePointsRedDino, qty:1, value:5}
-    ]
-  },
-  teamBlue: {
-    answer: 18,
-    onField: [
-      {dino:ThreePointsBlueDino, qty:1, value:3},
-      {dino:FivePointsBlueDino, qty:1, value:5},
-      {dino:TenPointsBlueDino, qty:1, value:10}
-    ]
-  }
-}
 
 const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
 };
+const placeRandom = () => ({
+  transform: `
+    scaleX(-1)
+    translate(
+      ${randBetween(-25, 25)}%,
+      ${randBetween(-100, 100)}%
+    )`,
+})
 
 const Level = () => {
   const { difficulty } = useParams();
+  const [levelData] = useState(() => {
+    switch (difficulty) {
+      case ':1Beginner':
+        return level1
+    
+      case ':2Beginner':
+        return level2
+    
+      case ':3Beginner':
+        return level3
 
-
+      case ':4Beginner':
+        return level4
+     
+      case ':5Beginner':
+        return level5
+    
+      case ':6Beginner':
+        return level6
+    
+      case ':7Beginner':
+        return level7
+    
+      case ':8Beginner':
+        return level8
+    
+      case ':9Beginner':
+        return level9
+    
+      case ':10Beginner':
+        return level10
+    
+      default:
+        break;
+    }
+  });
+    
   const redCountStore = useReducer(counterReducer, 0);
   const blueCountStore = useReducer(counterReducer, 0);
   const [pattern] = useState(
@@ -71,40 +84,23 @@ const Level = () => {
   );
 
   const [redDinos] = useState(
-    new Array(10).fill(undefined).map(() => {
+    levelData.teamRed.onField.map(({dinoType, qty}) => {
       return {
-        Component: OnePointRedDino,
-        style: {
-          transform: `
-            scaleX(-1)
-            translate(
-              ${randBetween(-25, 25)}%,
-              ${randBetween(-100, 100)}%
-            )`,
-        },
+        Component: dinoType,
+        quantity: qty,
       };
     })
   );
 
   const [blueDinos] = useState(
-    new Array(10).fill(undefined).map(() => {
+    levelData.teamBlue.onField.map(({dinoType, qty}) => {
       return {
-        Component: OnePointBlueDino,
-        style: {
-          transform: `
-            scaleX(-1)
-            translate(
-              ${randBetween(-25, 25)}%,
-              ${randBetween(-100, 100)}%
-            )`,
-        },
+        Component: dinoType,
+        quantity: qty,
       };
     })
   );
-  console.log(difficulty)
-if (difficulty === ':level1') {
-  console.log('true')
-}
+
   return (
     <StyledLevel background={pattern}>
       <VerticalDivider />
@@ -117,18 +113,34 @@ if (difficulty === ':level1') {
         <Counter store={blueCountStore} color="var(--blue)" reversed />
       </Counters>
       <Battlefield>
-        <Legend color="var(--red)" levelInfo={level1.teamRed} />
+        <Legend color="var(--red)" levelInfo={levelData.teamRed} />
         <TeamBoard>
-          {redDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
-          ))}
+          {redDinos.map(({ Component, quantity }, i) => {
+            const jsxArray = []
+            for (let i = 0; i < quantity; i++) {
+              jsxArray.push(<Dino as={Component} style={placeRandom()} key={i} />)
+            }
+            return (
+              <div key={i} >
+                {jsxArray.map(element => element)}
+              </div>
+            )
+            })}
         </TeamBoard>
         <TeamBoard reversed>
-          {blueDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
-          ))}
+          {blueDinos.map(({ Component, quantity }, i) => {
+            const jsxArray = []
+            for (let i = 0; i < quantity; i++) {
+              jsxArray.push(<Dino as={Component} style={placeRandom()} key={i} />)
+            }
+            return (
+              <div key={i} >
+                {jsxArray.map(element => element)}
+              </div>
+            )
+            })}
         </TeamBoard>
-        <Legend color="var(--blue)" reversed levelInfo={level1.teamBlue} />
+        <Legend color="var(--blue)" reversed levelInfo={levelData.teamBlue} />
       </Battlefield>
       <MainActionButton>Click here to battle!</MainActionButton>
     </StyledLevel>
