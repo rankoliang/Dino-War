@@ -61,3 +61,8 @@ export const AppExtras = styled.div`
     top: 20px;
   }
 `;
+
+export const Rule = styled.div`
+  display: none;
+  z-index: 10;
+`;
