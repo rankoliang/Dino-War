@@ -12,13 +12,13 @@ const Home = () => {
     ruleBtn.addEventListener("click", () => {
       ruleModal.style.display = "block";
     })
-  })
+  }, [])
 
   return (
     <App>
       <AppHeader>
         <Rules />
-        <p>
+        <p className="title">
           Dino-War
         </p>
         <AppLink
