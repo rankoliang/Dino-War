@@ -147,7 +147,7 @@ export const dinos = {
       },
       legends: {
         red: 1,
-        blue: 9,
+        blue: 10,
       }
     },
     ':5': {
@@ -156,8 +156,8 @@ export const dinos = {
         high: 4,
       },
       legends: {
-        red: 2,
-        blue: 10,
+        red: 8,
+        blue: 11,
       }
     },
     ':6': {
@@ -166,8 +166,8 @@ export const dinos = {
         high: 4,
       },
       legends: {
-        red: 3,
-        blue: 11,
+        red: 7,
+        blue: 12,
       }
     },
     ':7': {
@@ -176,8 +176,8 @@ export const dinos = {
         high: 4,
       },
       legends: {
-        red: 4,
-        blue: 12,
+        red: 6,
+        blue: 13,
       }
     },
     ':8': {
@@ -187,7 +187,7 @@ export const dinos = {
       },
       legends: {
         red: 5,
-        blue: 13,
+        blue: 14,
       }
     },
     ':9': {
@@ -196,8 +196,8 @@ export const dinos = {
         high: 4,
       },
       legends: {
-        red: 6,
-        blue: 14,
+        red: 4,
+        blue: 15,
       }
     },
     ':10': {
@@ -206,8 +206,8 @@ export const dinos = {
         high: 4,
       },
       legends: {
-        red: 7,
-        blue: 15,
+        red: 3,
+        blue: 16,
       }
     },
   }
