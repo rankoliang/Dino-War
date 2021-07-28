@@ -45,15 +45,7 @@ const Level = () => {
     const redDinoIds = Object.keys(legends[redLegendId]);
     return redDinoIds.map((dinoId) => {
         return {
-          Component: dinos[dinoId].Component,
-          style: {
-            transform: `
-              scaleX(-1)
-              translate(
-                ${randBetween(-25, 25)}%,
-                ${randBetween(-100, 100)}%
-              )`,
-          },
+          Component: dinos[dinoId].Component
         };
       })
     }
@@ -63,19 +55,29 @@ const Level = () => {
     const blueDinoIds = Object.keys(legends[blueLegendId]);
     return blueDinoIds.map((dinoId) => {
         return {
-          Component: dinos[dinoId].Component,
-          style: {
+          Component: dinos[dinoId].Component
+        };
+      })
+    }
+  );
+
+  const dinoPerLvlRange = Component => {
+    const range = randBetween(level.range.low, level.range.high)
+    const componentArray = []
+    for (let i = 0; i < range; i++) {
+        componentArray.push(
+        <Dino as={Component} style={{
             transform: `
               scaleX(-1)
               translate(
                 ${randBetween(-25, 25)}%,
                 ${randBetween(-100, 100)}%
               )`,
-          },
-        };
-      })
+          }} key={i} />
+          )
     }
-  );
+    return componentArray
+  }
 
   return (
     <StyledLevel background={pattern}>
@@ -91,14 +93,14 @@ const Level = () => {
       <Battlefield>
         <Legend color="var(--red)" levelInfo={redLegendId} />
         <TeamBoard>
-        {redDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
-          ))}
+        {redDinos.map(({ Component }) => {
+            return dinoPerLvlRange(Component)
+          })}
         </TeamBoard>
         <TeamBoard reversed>
-        {blueDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
-          ))}
+        {blueDinos.map(({ Component }) => {
+            return dinoPerLvlRange(Component)
+          })}
         </TeamBoard>
         <Legend color="var(--blue)" reversed levelInfo={blueLegendId} />
       </Battlefield>
