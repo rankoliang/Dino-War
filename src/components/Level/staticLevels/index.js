@@ -10,193 +10,64 @@ import { ReactComponent as ThreePointsBlueDino } from '../../../icons/dinosaurs/
 import { ReactComponent as FivePointsBlueDino } from '../../../icons/dinosaurs/blue-five-points.svg';
 import { ReactComponent as TenPointsBlueDino } from '../../../icons/dinosaurs/blue-ten-points.svg';
 
-export const level1 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 18,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:3},
-        {dinoType:FivePointsBlueDino, qty:1, value:5},
-        {dinoType:TenPointsBlueDino, qty:1, value:10}
-      ]
-    }
+export const dinos = {
+    '1': { id: 1, Component: OnePointRedDino },
+    '2': { id: 2, Component: TwoPointsRedDino },
+    '3': { id: 3, Component: ThreePointsRedDino },
+    '4': { id: 4, Component: FivePointsRedDino },
+    '5': { id: 5, Component: TenPointsRedDino },
+    '6': { id: 6, Component: OnePointBlueDino },
+    '7': { id: 7, Component: TwoPointsBlueDino },
+    '8': { id: 8, Component: ThreePointsBlueDino },
+    '9': { id: 9, Component: FivePointsBlueDino },
+    '10': { id: 10, Component: TenPointsBlueDino },
   }
-  export const level2 = {
-    pointGoal: 15,
-    teamRed: {
-      answer: 25,
-      onField: [
-        {dinoType:OnePointRedDino, qty:3, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:TenPointsRedDino, qty:2, value:10}
-      ]
+  
+  export const legends = {
+    // key = dino id
+      // value = points
+    '1': {
+      '1': 1,
+      '2': 2,
+      '4': 5
     },
-    teamBlue: {
-      answer: 10,
-      onField: [
-        {dinoType:OnePointBlueDino, qty:5, value:1},
-        {dinoType:TwoPointsBlueDino, qty:1, value:2},
-        {dinoType:ThreePointsBlueDino, qty:1, value:3}
-      ]
-    }
+    '2': {
+      '8': 3,
+      '9': 5,
+      '10': 10
+    },
+    '3': {
+      '1': 1,
+      '2': 2,
+      '5': 10,
+    },
+    '4': {
+      '6': 1,
+      '7': 2,
+      '8': 3,
+    },
   }
-  export const level3 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
+
+  export const levels = {
+    ':1': {
+      // range of number of dinos to be generated
+      range: {
+        low: 3,
+        high: 5,
+      },
+      legends: {
+        red: 1,
+        blue: 2,
+      }
     },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level4 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
+    ':2': {
+      range: {
+        low: 3,
+        high: 5,
+      },
+      legends: {
+        red: 3,
+        blue: 4,
+      }
     },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level5 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level6 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level7 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level8 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level9 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
-  }
-  export const level10 = {
-    pointGoal: 10,
-    teamRed: {
-      answer: 8,
-      onField: [
-        {dinoType:OnePointRedDino, qty:1, value:1},
-        {dinoType:TwoPointsRedDino, qty:1, value:2},
-        {dinoType:FivePointsRedDino, qty:1, value:5}
-      ]
-    },
-    teamBlue: {
-      answer: 6,
-      onField: [
-        {dinoType:ThreePointsBlueDino, qty:1, value:1},
-        {dinoType:FivePointsBlueDino, qty:1, value:2},
-        {dinoType:TenPointsBlueDino, qty:1, value:3}
-      ]
-    }
   }
