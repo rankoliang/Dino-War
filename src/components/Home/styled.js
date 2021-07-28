@@ -17,6 +17,9 @@ export const AppHeader = styled.header`
   flex-direction: column;
   align-items: center;
   font-size: calc(10px + 2vmin);
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
+  height: 100%;
   & .title {
     display: block;
     width: 100%;
@@ -52,6 +55,7 @@ export const AppIcon = styled.a`
   color: var(--red);
   font-size: calc(10px + 8vmin);
   filter: drop-shadow(1px 1px 1px #000);
+  fill-rule: #fff;
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
