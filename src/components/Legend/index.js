@@ -1,8 +1,8 @@
 import { StyledLegend, LegendLabel, Dino, LegendGroup } from './styled';
 import { dinos, legends } from '../Level/staticLevels'
 
-const Legend = ({ color, reversed, levelInfo }) => {
-  const legendData = Object.entries(legends[levelInfo])
+const Legend = ({ color, reversed, teamId }) => {
+  const legendData = Object.entries(teamId)
   return (
     <StyledLegend color={color} reversed={reversed}>
       <LegendLabel>Points</LegendLabel>
