@@ -17,7 +17,7 @@ import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
 import './Level.css';
-var shuffle = require('shuffle-array');
+import shuffle from 'shuffle-array';
 
 const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
