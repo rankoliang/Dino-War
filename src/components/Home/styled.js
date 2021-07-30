@@ -20,7 +20,7 @@ export const AppHeader = styled.header`
   background: rgba(255,255,255,0.3);
   backdrop-filter: blur(4px);
   height: 100%;
-  & .title {
+  .title {
     display: block;
     width: 100%;
     background: var(--blue);
@@ -51,7 +51,7 @@ export const AppLink = styled.a`
   }
 `;
 
-export const AppIcon = styled.a`
+export const IconLink = styled.a`
   color: var(--red);
   font-size: calc(10px + 8vmin);
   filter: drop-shadow(1px 1px 1px #000);

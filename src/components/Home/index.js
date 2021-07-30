@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
-import Rules from "../Rules/rules";
+import { useState } from "react";
 import trianglify from 'trianglify';
+import SettingsButton from "../Icons/SettingsButton";
+import RulesButton from "../Icons/RulesButton";
+import MusicButton from "../Icons/MusicButton";
 import { App, AppHeader, AppLink, AppIcon, AppExtras } from './styled';
-import { FaArrowCircleLeft, FaCog, FaVolumeUp, FaBook } from "react-icons/fa";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
 const Home = () => {
   const [pattern] = useState(
@@ -16,20 +18,16 @@ const Home = () => {
       .toSVGTree()
       .toString()
   );
+  const [ rulesShown, setRulesShown ] = useState(false);
 
-  useEffect(() => {
-    const ruleBtn = document.querySelector(".rules");
-    const ruleModal = document.querySelector("#modal");
-
-    ruleBtn.addEventListener("click", () => {
-      ruleModal.style.display = "block";
-    })
-  }, [])
+  const rulesClick = () => {
+    setRulesShown(true);
+  };
 
   return (
     <App background={pattern}>
       <AppHeader>
-        <Rules />
+        {rulesShown && <Rules setShown={setRulesShown} />}
         <p className="title">
           Dino-War
         </p>
@@ -39,32 +37,17 @@ const Home = () => {
         >
           Level 1
         </AppLink>
-        <AppIcon
+        <IconLink
           href="#"
           title="Previous Level"
         >
           <FaArrowCircleLeft />
-        </AppIcon>
+        </IconLink>
 
         <AppExtras>
-          <AppIcon
-            href="#"
-            title="Settings"
-          >
-            <FaCog />
-          </AppIcon>
-          <AppIcon
-            href="#"
-            title="Music"
-          >
-            <FaVolumeUp />
-          </AppIcon>
-          <AppIcon
-            title="Instructions"
-            className="rules"
-          >
-            <FaBook />
-          </AppIcon>
+          <SettingsButton />
+          <MusicButton />
+          <RulesButton onClick={rulesClick} />
         </AppExtras>
       </AppHeader>
     </App>
