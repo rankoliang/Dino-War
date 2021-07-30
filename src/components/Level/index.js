@@ -24,8 +24,7 @@ const randBetween = (low, high) => {
 
 const Level = () => {
   const { difficulty } = useParams();
-  const levelId = difficulty.split('')[1];
-  const level = levels[levelId];
+  const level = levels[difficulty];
   const redLegendId = level.legends.red;
   const blueLegendId = level.legends.blue;
   const redCountStore = useReducer(counterReducer, 0);
