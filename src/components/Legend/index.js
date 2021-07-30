@@ -1,5 +1,5 @@
 import { StyledLegend, LegendLabel, Dino, LegendGroup } from './styled';
-import { dinos } from '../Level/staticLevels'
+import { dinos } from '../data/dinos.js'
 
 const Legend = ({ color, reversed, legend }) => {
   const legendData = Object.entries(legend)

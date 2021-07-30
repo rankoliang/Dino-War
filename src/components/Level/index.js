@@ -11,7 +11,9 @@ import {
   Dino,
   TeamBoard,
 } from './styled';
-import { dinos, legends, levels } from "./staticLevels";
+import { dinos } from "../data/dinos.js";
+import { legends } from "../data/legends.js";
+import { levels } from "../data/levels.js";
 import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
