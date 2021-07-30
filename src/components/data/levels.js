@@ -292,7 +292,7 @@ export const levels = {
         high: 5,
       },
       legends: {
-        red: 30,
+        red: 27,
         blue: 35,
       },
     },
@@ -302,7 +302,7 @@ export const levels = {
         high: 6,
       },
       legends: {
-        red: 29,
+        red: 30,
         blue: 34,
       },
     },
