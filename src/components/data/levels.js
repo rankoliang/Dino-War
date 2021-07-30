@@ -103,4 +103,208 @@ export const levels = {
       },
     },
   },
+  average: {
+    1: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 17,
+        blue: 26,
+      },
+    },
+    2: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 18,
+        blue: 25,
+      },
+    },
+    3: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 19,
+        blue: 24,
+      },
+    },
+    4: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 20,
+        blue: 23,
+      },
+    },
+    5: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 21,
+        blue: 22,
+      },
+    },
+    6: {
+      range: {
+        low: 2,
+        high: 4,
+      },
+      legends: {
+        red: 19,
+        blue: 26,
+      },
+    },
+    7: {
+      range: {
+        low: 2,
+        high: 4,
+      },
+      legends: {
+        red: 18,
+        blue: 22,
+      },
+    },
+    8: {
+      range: {
+        low: 1,
+        high: 5,
+      },
+      legends: {
+        red: 21,
+        blue: 23,
+      },
+    },
+    9: {
+      range: {
+        low: 1,
+        high: 5,
+      },
+      legends: {
+        red: 20,
+        blue: 25,
+      },
+    },
+    10: {
+      range: {
+        low: 2,
+        high: 6,
+      },
+      legends: {
+        red: 19,
+        blue: 24,
+      },
+    },
+  },
+  hard: {
+    1: {
+      range: {
+        low: 1,
+        high: 1,
+      },
+      legends: {
+        red: 27,
+        blue: 36,
+      },
+    },
+    2: {
+      range: {
+        low: 1,
+        high: 3,
+      },
+      legends: {
+        red: 28,
+        blue: 35,
+      },
+    },
+    3: {
+      range: {
+        low: 2,
+        high: 2,
+      },
+      legends: {
+        red: 29,
+        blue: 34,
+      },
+    },
+    4: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 30,
+        blue: 33,
+      },
+    },
+    5: {
+      range: {
+        low: 1,
+        high: 4,
+      },
+      legends: {
+        red: 31,
+        blue: 32,
+      },
+    },
+    6: {
+      range: {
+        low: 2,
+        high: 4,
+      },
+      legends: {
+        red: 29,
+        blue: 36,
+      },
+    },
+    7: {
+      range: {
+        low: 2,
+        high: 4,
+      },
+      legends: {
+        red: 28,
+        blue: 32,
+      },
+    },
+    8: {
+      range: {
+        low: 1,
+        high: 5,
+      },
+      legends: {
+        red: 31,
+        blue: 33,
+      },
+    },
+    9: {
+      range: {
+        low: 1,
+        high: 5,
+      },
+      legends: {
+        red: 30,
+        blue: 35,
+      },
+    },
+    10: {
+      range: {
+        low: 2,
+        high: 6,
+      },
+      legends: {
+        red: 29,
+        blue: 34,
+      },
+    },
+  },
 };
