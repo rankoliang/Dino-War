@@ -91,7 +91,7 @@ const Level = () => {
         <Counter store={blueCountStore} color="var(--blue)" reversed />
       </Counters>
       <Battlefield>
-        <Legend color="var(--red)" teamId={legends[redLegendId]} />
+        <Legend color="var(--red)" legend={legends[redLegendId]} />
         <TeamBoard>
         {redDinos.map(({ Component }) => {
             return dinoPerLvlRange(Component)
@@ -102,7 +102,7 @@ const Level = () => {
             return dinoPerLvlRange(Component)
           })}
         </TeamBoard>
-        <Legend color="var(--blue)" reversed teamId={legends[blueLegendId]} />
+        <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
       </Battlefield>
       <MainActionButton>Click here to battle!</MainActionButton>
     </StyledLevel>
