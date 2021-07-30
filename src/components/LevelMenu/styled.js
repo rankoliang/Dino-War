@@ -19,7 +19,6 @@ display: flex;
 flex-direction: column;
 background: var(--red);
 border-radius: 5px;
-height: 400px;
 max-width: 80ch;
 padding: 0 0 3em;
 box-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -28,7 +27,6 @@ export const ButtonNavigation = styled.div`
 display: flex;
 justify-content: space-between;
 padding: 1em;
-height: 5vh;
 `
 
 export const IconStyle = styled.a`
@@ -46,6 +44,7 @@ display: flex;
 justify-content: space-around;
 align-items: center;
 flex: 1;
+margin: 1em;
 `
 
 export const LeftSelection = styled.h2`
@@ -75,8 +74,7 @@ export const LevelContainer = styled.div`
 display: flex;
 padding: 1em 0.5em;
 background-color: var(--blue);
-overflow: hidden;
-height: 200px;
+overflow: auto;
 `
 
 export const Card = styled.div`
