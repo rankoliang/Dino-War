@@ -109,7 +109,7 @@ export const dinos = {
   }
 
   export const levels = { //first three levels are fixed winners.
-    ':1': {
+    '1': {
       // range of number of dinos to be generated
       range: {
         low: 1,
@@ -120,7 +120,7 @@ export const dinos = {
         blue: 11,
       }
     },
-    ':2': {
+    '2': {
       range: {
         low: 1,
         high: 3,
@@ -130,7 +130,7 @@ export const dinos = {
         blue: 9,
       }
     },
-    ':3': {
+    '3': {
       range: {
         low: 2,
         high: 2,
@@ -140,7 +140,7 @@ export const dinos = {
         blue: 14,
       }
     },
-    ':4': {
+    '4': {
       range: {
         low: 1,
         high: 4,
@@ -150,7 +150,7 @@ export const dinos = {
         blue: 10,
       }
     },
-    ':5': {
+    '5': {
       range: {
         low: 1,
         high: 4,
@@ -160,7 +160,7 @@ export const dinos = {
         blue: 11,
       }
     },
-    ':6': {
+    '6': {
       range: {
         low: 1,
         high: 4,
@@ -170,7 +170,7 @@ export const dinos = {
         blue: 12,
       }
     },
-    ':7': {
+    '7': {
       range: {
         low: 1,
         high: 4,
@@ -180,7 +180,7 @@ export const dinos = {
         blue: 13,
       }
     },
-    ':8': {
+    '8': {
       range: {
         low: 1,
         high: 4,
@@ -190,7 +190,7 @@ export const dinos = {
         blue: 14,
       }
     },
-    ':9': {
+    '9': {
       range: {
         low: 1,
         high: 4,
@@ -200,7 +200,7 @@ export const dinos = {
         blue: 15,
       }
     },
-    ':10': {
+    '10': {
       range: {
         low: 1,
         high: 4,
