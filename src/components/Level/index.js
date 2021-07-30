@@ -17,6 +17,7 @@ import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
 import './Level.css';
+var shuffle = require('shuffle-array');
 
 const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
@@ -41,44 +42,59 @@ const Level = () => {
       .toString()
   );
 
+  const getRange = (dinoIds) => {
+    const dinoArray = dinoIds.map(id => {
+      const idArray = [];
+      const range = randBetween(level.range.low, level.range.high)
+        for (let i = 0; i < range; i++) {
+          idArray.push(id)
+        }
+        return idArray
+      }
+    )
+    const spread = []
+    return spread.concat(...dinoArray)
+  }
+
   const [redDinos] = useState(() => {
     const redDinoIds = Object.keys(legends[redLegendId]);
-    return redDinoIds.map((dinoId) => {
-        return {
-          Component: dinos[dinoId].Component
-        };
-      })
+    const dinoArray = getRange(redDinoIds)
+    shuffle(dinoArray)
+    return dinoArray.map((dinoId) => {
+      return {
+        Component: dinos[dinoId].Component,
+        style: {
+          transform: `
+            scaleX(-1)
+            translate(
+              ${randBetween(-25, 25)}%,
+              ${randBetween(-100, 100)}%
+            )`,
+        },
+      };
     }
-  );
+    );
+  });
 
   const [blueDinos] = useState(() => {
     const blueDinoIds = Object.keys(legends[blueLegendId]);
-    return blueDinoIds.map((dinoId) => {
-        return {
-          Component: dinos[dinoId].Component
-        };
-      })
+    const dinoArray = getRange(blueDinoIds)
+    shuffle(dinoArray)
+    return dinoArray.map((dinoId) => {
+      return {
+        Component: dinos[dinoId].Component,
+        style: {
+          transform: `
+            scaleX(-1)
+            translate(
+              ${randBetween(-25, 25)}%,
+              ${randBetween(-100, 100)}%
+            )`,
+        },
+      };
     }
-  );
-
-  const dinoPerLvlRange = Component => {
-    const range = randBetween(level.range.low, level.range.high)
-    const componentArray = []
-    for (let i = 0; i < range; i++) {
-        componentArray.push(
-        <Dino as={Component} style={{
-            transform: `
-              scaleX(-1)
-              translate(
-                ${randBetween(-25, 25)}%,
-                ${randBetween(-100, 100)}%
-              )`,
-          }} key={i} />
-          )
-    }
-    return componentArray
-  }
-
+    );
+  });
   return (
     <StyledLevel background={pattern}>
       <VerticalDivider />
@@ -93,14 +109,14 @@ const Level = () => {
       <Battlefield>
         <Legend color="var(--red)" legend={legends[redLegendId]} />
         <TeamBoard>
-        {redDinos.map(({ Component }) => {
-            return dinoPerLvlRange(Component)
-          })}
+        {redDinos.map(({ Component, style }, i) => (
+            <Dino as={Component} style={style} key={i} />
+          ))}
         </TeamBoard>
         <TeamBoard reversed>
-        {blueDinos.map(({ Component }) => {
-            return dinoPerLvlRange(Component)
-          })}
+        {blueDinos.map(({ Component, style }, i) => (
+            <Dino as={Component} style={style} key={i} />
+          ))}
         </TeamBoard>
         <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
       </Battlefield>
