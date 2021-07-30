@@ -8,38 +8,30 @@ import { LevelContainer, Card, LevelTitle, Link
 
 function Levels(props) {
   const [data, setData] = useState({
-    1: "incomplete",
-    2: "incomplete",
-    3: "incomplete",
-    4: "incomplete",
-    5: "incomplete",
-    6: "incomplete",
-    7: "incomplete",
-    8: "incomplete",
-    9: "incomplete",
-    10: "incomplete"
+    1: "Incomplete",
+    2: "Incomplete",
+    3: "Incomplete",
+    4: "Incomplete",
+    5: "Incomplete",
+    6: "Incomplete",
+    7: "Incomplete",
+    8: "Incomplete",
+    9: "Incomplete",
+    10: "Incomplete"
   })
   const levels = Object.entries(data)
   const renderStatus = (status) => {
-    if (status === "incomplete") {
-      return (
-        <Incomplete />
-      )
+    if (status === "Incomplete") {
+      return <Incomplete />
     }
     if (status === "Badge1") {
-      return (
-        <Badge1 />
-      )
+      return <Badge1 />
     }
     if (status === "Badge2") {
-      return (
-        <Badge2 />
-      )
+      return <Badge2 />
     }
     if (status === "Badge3") {
-      return (
-        <Badge3 />
-      )
+      return <Badge3 />
     }
   }
     return (
