@@ -41,7 +41,7 @@ export const IconStyle = styled.a`
 
 export const DifficultySelect = styled.div`
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
 flex: 1;
 margin: 1em;
@@ -49,6 +49,8 @@ margin: 1em;
 
 export const LeftSelection = styled.h2`
 letter-spacing: 2px;
+flex: 1;
+text-align: center;
 font-weight: normal;
 color: grey;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -56,6 +58,8 @@ transition: all 0.2s;
 `
 export const CurrentSelection = styled.h2`
 letter-spacing: 2px;
+width: 10em;
+text-align: center;
 font-weight: normal;
 color: #fff;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -64,6 +68,8 @@ transition: all 0.2s;
 `
 export const RightSelection = styled.h2 `
 letter-spacing: 2px;
+flex: 1;
+text-align: center;
 font-weight: normal;
 color: grey;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.8);

@@ -37,10 +37,10 @@ const LevelMenu = () => {
     <StyledLevel background={pattern} >
       <Container>
         <ButtonNavigation>
-          <IconStyle>
+          <IconStyle href="#/">
             <IoMdArrowRoundBack size="2.5rem"/>
           </IconStyle>
-          <IconStyle>
+          <IconStyle href="#/">
             <FaHome size="2.5rem"/>
           </IconStyle>
         </ButtonNavigation>
