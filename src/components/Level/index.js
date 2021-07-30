@@ -11,9 +11,9 @@ import {
   Dino,
   TeamBoard,
 } from './styled';
-import { dinos } from "../data/dinos.js";
-import { legends } from "../data/legends.js";
-import { levels } from "../data/levels.js";
+import { dinos } from '../data/dinos.js';
+import { legends } from '../data/legends.js';
+import { levels } from '../data/levels.js';
 import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
@@ -26,8 +26,13 @@ const randBetween = (low, high) => {
 };
 
 const Level = () => {
-  const { difficulty } = useParams();
-  const level = levels[difficulty];
+  const { stage } = useParams();
+  const difficulty = window.location.href
+    .split('/')
+    .filter(
+      (name) => name === 'beginner' || name === 'average' || name === 'hard'
+    );
+  const level = levels[difficulty][stage];
   const redLegendId = level.legends.red;
   const blueLegendId = level.legends.blue;
   const redCountStore = useReducer(counterReducer, 0);
@@ -50,17 +55,17 @@ const Level = () => {
     const dinoArray = dinoIds.reduce((dinos, id) => {
       const dinoCount = randBetween(low, high);
       for (let i = 0; i < dinoCount; i++) {
-        dinos.push(id)
+        dinos.push(id);
       }
-      return dinos
-    }, [])
-    return dinoArray
-  }
+      return dinos;
+    }, []);
+    return dinoArray;
+  };
 
   const [redDinos] = useState(() => {
     const redDinoIds = Object.keys(legends[redLegendId]);
-    const dinoArray = getRange(redDinoIds)
-    shuffle(dinoArray)
+    const dinoArray = getRange(redDinoIds);
+    shuffle(dinoArray);
     return dinoArray.map((dinoId) => {
       return {
         Component: dinos[dinoId].Component,
@@ -73,14 +78,13 @@ const Level = () => {
             )`,
         },
       };
-    }
-    );
+    });
   });
 
   const [blueDinos] = useState(() => {
     const blueDinoIds = Object.keys(legends[blueLegendId]);
-    const dinoArray = getRange(blueDinoIds)
-    shuffle(dinoArray)
+    const dinoArray = getRange(blueDinoIds);
+    shuffle(dinoArray);
     return dinoArray.map((dinoId) => {
       return {
         Component: dinos[dinoId].Component,
@@ -93,8 +97,7 @@ const Level = () => {
             )`,
         },
       };
-    }
-    );
+    });
   });
   return (
     <StyledLevel background={pattern}>
@@ -110,12 +113,12 @@ const Level = () => {
       <Battlefield>
         <Legend color="var(--red)" legend={legends[redLegendId]} />
         <TeamBoard>
-        {redDinos.map(({ Component, style }, i) => (
+          {redDinos.map(({ Component, style }, i) => (
             <Dino as={Component} style={style} key={i} />
           ))}
         </TeamBoard>
         <TeamBoard reversed>
-        {blueDinos.map(({ Component, style }, i) => (
+          {blueDinos.map(({ Component, style }, i) => (
             <Dino as={Component} style={style} key={i} />
           ))}
         </TeamBoard>
