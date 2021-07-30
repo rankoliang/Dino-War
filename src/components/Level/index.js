@@ -43,17 +43,16 @@ const Level = () => {
   );
 
   const getRange = (dinoIds) => {
-    const dinoArray = dinoIds.map(id => {
-      const idArray = [];
-      const range = randBetween(level.range.low, level.range.high)
-        for (let i = 0; i < range; i++) {
-          idArray.push(id)
-        }
-        return idArray
+    const { low, high } = level.range;
+
+    const dinoArray = dinoIds.reduce((dinos, id) => {
+      const dinoCount = randBetween(low, high);
+      for (let i = 0; i < dinoCount; i++) {
+        dinos.push(id)
       }
-    )
-    const spread = []
-    return spread.concat(...dinoArray)
+      return dinos
+    }, [])
+    return dinoArray
   }
 
   const [redDinos] = useState(() => {
