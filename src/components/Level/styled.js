@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { StyledCounter } from '../Counter/styled';
 
 export const TeamNames = styled.div`
   width: 100%;
@@ -12,17 +13,33 @@ export const TeamName = styled.h2`
   color: white;
   background: ${({ background }) => background || 'white'};
   text-align: center;
-  font-size: 3rem;
+  font-size: 3em;
   font-weight: normal;
 `;
 
 export const Counters = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  height: 10rem;
+  transition: opacity 0.25s linear;
+
+  ${({ counting }) =>
+    counting &&
+    css`
+      justify-content: space-around;
+    `}
+
+  ${({ transitioning }) =>
+    transitioning &&
+    css`
+      opacity: 0%;
+      pointer-events: none;
+    `}
 `;
 
 export const MainActionButton = styled.button`
-  font-size: 2.5rem;
+  font-size: 2.5em;
   font-family: inherit;
   width: 100%;
   border: 0;
@@ -48,8 +65,9 @@ export const Battlefield = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3em;
-  margin-bottom: 1.5em;
+  padding: 0 3rem;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
   z-index: 0;
 `;
 
@@ -59,7 +77,7 @@ export const TeamBoard = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;
-  align-content: space-around;
+  align-content: center;
   margin: 0 2em;
   margin-bottom: 3em;
   ${({ reversed }) =>
@@ -70,8 +88,9 @@ export const TeamBoard = styled.div`
 `;
 
 export const Dino = styled.svg`
-  width: 6rem;
-  height: 6rem;
+  width: 6em;
+  height: 6em;
+  margin: 0.5em;
 
   circle[fill='#edebdc'] {
     display: none;
@@ -87,6 +106,7 @@ export const VerticalDivider = styled.div`
 `;
 
 export const StyledLevel = styled.main`
+  min-width: 61.5em;
   display: flex;
   flex-direction: column;
   ${({ background }) =>

@@ -35,7 +35,7 @@ export const StyledLegend = styled.div`
   background: ${({ color }) => color || 'black'};
   border-radius: 5px;
   padding: 0 1em;
-  font-size: 2rem;
+  font-size: 2em;
 
   ${({ reversed }) =>
     reversed &&

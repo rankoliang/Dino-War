@@ -28,7 +28,7 @@ export const CounterInputs = styled.div`
 
 export const CounterLabel = styled.h3`
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: normal;
   margin: 0.5em 0;
 `;

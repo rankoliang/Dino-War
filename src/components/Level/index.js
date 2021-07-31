@@ -13,6 +13,7 @@ import {
 } from './styled';
 import Legend from '../Legend';
 import Counter from '../Counter';
+import ScoreResult from '../ScoreResult';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
 import { ReactComponent as OnePointRedDino } from '../../icons/dinosaurs/red-one-point.svg';
@@ -28,6 +29,8 @@ const Level = () => {
 
   const redCountStore = useReducer(counterReducer, 0);
   const blueCountStore = useReducer(counterReducer, 0);
+  const [counting, setCounting] = useState(false);
+  const [transitioning, setTransitioning] = useState(null);
   const [pattern] = useState(
     trianglify({
       cellSize: 100,
@@ -39,6 +42,11 @@ const Level = () => {
       .toSVGTree()
       .toString()
   );
+
+  const handleTransitionEnd = (event) => {
+    setCounting(true);
+    setTransitioning(false);
+  };
 
   const [redDinos] = useState(
     new Array(10).fill(undefined).map(() => {
@@ -79,9 +87,21 @@ const Level = () => {
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>
       </TeamNames>
-      <Counters>
-        <Counter store={redCountStore} color="var(--red)" />
-        <Counter store={blueCountStore} color="var(--blue)" reversed />
+      <Counters
+        onTransitionEnd={handleTransitionEnd}
+        transitioning={transitioning}
+        counting={counting}
+      >
+        {counting ? (
+          <ScoreResult score={redCountStore[0]} color="var(--red)" />
+        ) : (
+          <Counter store={redCountStore} color="var(--red)" />
+        )}
+        {counting ? (
+          <ScoreResult score={blueCountStore[0]} color="var(--blue)" reversed />
+        ) : (
+          <Counter store={blueCountStore} color="var(--blue)" reversed />
+        )}
       </Counters>
       <Battlefield>
         <Legend color="var(--red)" />
@@ -97,7 +117,16 @@ const Level = () => {
         </TeamBoard>
         <Legend color="var(--blue)" reversed />
       </Battlefield>
-      <MainActionButton>Click here to battle!</MainActionButton>
+      <MainActionButton
+        onClick={() => {
+          if (!counting) {
+            // transition to counting state
+            setTransitioning(true);
+          }
+        }}
+      >
+        Click here to battle!
+      </MainActionButton>
     </StyledLevel>
   );
 };
