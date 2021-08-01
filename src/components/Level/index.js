@@ -11,20 +11,23 @@ import {
   Dino,
   TeamBoard,
 } from './styled';
-import { dinos, legends, levels } from "./staticLevels";
+import { dinos } from '../data/dinos.js';
+import { legends } from '../data/legends.js';
+import { levels } from '../data/levels.js';
 import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
 import './Level.css';
+import shuffle from 'shuffle-array';
 
 const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
 };
 
 const Level = () => {
-  const { difficulty } = useParams();
-  const level = levels[difficulty];
+  const { difficulty, stage } = useParams();
+  const level = levels[difficulty][stage];
   const redLegendId = level.legends.red;
   const blueLegendId = level.legends.blue;
   const redCountStore = useReducer(counterReducer, 0);
@@ -41,44 +44,56 @@ const Level = () => {
       .toString()
   );
 
+  const getRange = (dinoIds) => {
+    const { low, high } = level.range;
+
+    const dinoArray = dinoIds.reduce((dinos, id) => {
+      const dinoCount = randBetween(low, high);
+      for (let i = 0; i < dinoCount; i++) {
+        dinos.push(id);
+      }
+      return dinos;
+    }, []);
+    return dinoArray;
+  };
+
   const [redDinos] = useState(() => {
     const redDinoIds = Object.keys(legends[redLegendId]);
-    return redDinoIds.map((dinoId) => {
-        return {
-          Component: dinos[dinoId].Component
-        };
-      })
-    }
-  );
+    const dinoArray = getRange(redDinoIds);
+    shuffle(dinoArray);
+    return dinoArray.map((dinoId) => {
+      return {
+        Component: dinos[dinoId].Component,
+        style: {
+          transform: `
+            scaleX(-1)
+            translate(
+              ${randBetween(-25, 25)}%,
+              ${randBetween(-100, 100)}%
+            )`,
+        },
+      };
+    });
+  });
 
   const [blueDinos] = useState(() => {
     const blueDinoIds = Object.keys(legends[blueLegendId]);
-    return blueDinoIds.map((dinoId) => {
-        return {
-          Component: dinos[dinoId].Component
-        };
-      })
-    }
-  );
-
-  const dinoPerLvlRange = Component => {
-    const range = randBetween(level.range.low, level.range.high)
-    const componentArray = []
-    for (let i = 0; i < range; i++) {
-        componentArray.push(
-        <Dino as={Component} style={{
-            transform: `
-              scaleX(-1)
-              translate(
-                ${randBetween(-25, 25)}%,
-                ${randBetween(-100, 100)}%
-              )`,
-          }} key={i} />
-          )
-    }
-    return componentArray
-  }
-
+    const dinoArray = getRange(blueDinoIds);
+    shuffle(dinoArray);
+    return dinoArray.map((dinoId) => {
+      return {
+        Component: dinos[dinoId].Component,
+        style: {
+          transform: `
+            scaleX(-1)
+            translate(
+              ${randBetween(-25, 25)}%,
+              ${randBetween(-100, 100)}%
+            )`,
+        },
+      };
+    });
+  });
   return (
     <StyledLevel background={pattern}>
       <VerticalDivider />
@@ -91,18 +106,18 @@ const Level = () => {
         <Counter store={blueCountStore} color="var(--blue)" reversed />
       </Counters>
       <Battlefield>
-        <Legend color="var(--red)" teamId={legends[redLegendId]} />
+        <Legend color="var(--red)" legend={legends[redLegendId]} />
         <TeamBoard>
-        {redDinos.map(({ Component }) => {
-            return dinoPerLvlRange(Component)
-          })}
+          {redDinos.map(({ Component, style }, i) => (
+            <Dino as={Component} style={style} key={i} />
+          ))}
         </TeamBoard>
         <TeamBoard reversed>
-        {blueDinos.map(({ Component }) => {
-            return dinoPerLvlRange(Component)
-          })}
+          {blueDinos.map(({ Component, style }, i) => (
+            <Dino as={Component} style={style} key={i} />
+          ))}
         </TeamBoard>
-        <Legend color="var(--blue)" reversed teamId={legends[blueLegendId]} />
+        <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
       </Battlefield>
       <MainActionButton>Click here to battle!</MainActionButton>
     </StyledLevel>

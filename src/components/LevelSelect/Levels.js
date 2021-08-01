@@ -3,7 +3,8 @@ import { ReactComponent as Badge1 } from '../../icons/badgeCompletion1.svg';
 import { ReactComponent as Badge2 } from '../../icons/badgeCompletion2.svg';
 import { ReactComponent as Badge3 } from '../../icons/badgeCompletion3.svg';
 import { ReactComponent as Incomplete } from '../../icons/badgeNoComplete.svg';
-import { LevelContainer, Card, LevelTitle, Link } from './styled';
+import { LevelContainer, Card, LevelTitle } from './styled';
+import { Link } from 'react-router-dom';
 
 function Levels(props) {
   //setData will be used when we have local storage setup.
@@ -69,11 +70,12 @@ function Levels(props) {
       {levels.map((data, i) => {
         const [level, status] = data;
         return (
-          <Card key={i}>
-            <Link href={`/levels/${props.selection}/${level}`} />
-            <LevelTitle>{`Level ${level}`}</LevelTitle>
-            {renderStatus(status)}
-          </Card>
+          <Link to={`/levels/${props.selection}/${level}`} key={i}>
+            <Card>
+              <LevelTitle>{`Level ${level}`}</LevelTitle>
+              {renderStatus(status)}
+            </Card>
+          </Link>
         );
       })}
     </LevelContainer>
