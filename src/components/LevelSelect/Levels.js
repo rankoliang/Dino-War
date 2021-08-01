@@ -70,7 +70,7 @@ function Levels(props) {
         const [level, status] = data;
         return (
           <Card key={i}>
-            <Link href={`#/levels/${props.selection}/${level}`} />
+            <Link href={`/levels/${props.selection}/${level}`} />
             <LevelTitle>{`Level ${level}`}</LevelTitle>
             {renderStatus(status)}
           </Card>
