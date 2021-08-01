@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const TeamNames = styled.div`
   width: 100%;
   display: flex;
+  z-index: 1;
 `;
 
 export const TeamName = styled.h2`
@@ -21,6 +22,7 @@ export const Counters = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   height: 10rem;
+  transition: transform 0.5s ease-out;
 
   ${({ counting }) =>
     counting &&
@@ -77,13 +79,15 @@ export const TeamBoard = styled.div`
   flex-wrap: wrap;
   flex-direction: row-reverse;
   align-content: center;
-  margin: 0 2em;
-  margin-bottom: 3em;
+  padding: 0 1em;
+  padding-bottom: 3em;
+  border-right: 2px solid rgba(0, 0, 0, 0.4);
+
   ${({ reversed }) =>
     reversed &&
     css`
       transform: scaleX(-1);
-    `}
+    `};
 `;
 
 export const Dino = styled.svg`
@@ -94,14 +98,6 @@ export const Dino = styled.svg`
   circle[fill='#edebdc'] {
     display: none;
   }
-`;
-
-export const VerticalDivider = styled.div`
-  border-left: 3px solid black;
-  position: fixed;
-  left: 50%;
-  height: 100%;
-  transform: translateX(-50%);
 `;
 
 export const StyledLevel = styled.main`

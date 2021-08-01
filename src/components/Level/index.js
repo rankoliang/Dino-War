@@ -7,7 +7,6 @@ import {
   MainActionButton,
   Battlefield,
   StyledLevel,
-  VerticalDivider,
   Dino,
   TeamBoard,
 } from './styled';
@@ -82,7 +81,6 @@ const Level = () => {
 
   return (
     <StyledLevel background={pattern}>
-      <VerticalDivider />
       <TeamNames>
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>
