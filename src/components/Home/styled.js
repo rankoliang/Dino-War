@@ -27,10 +27,10 @@ export const AppHeader = styled.header`
     font-size: calc(2em + 13vmin);
     cursor: default;
     letter-spacing: 2px;
-    padding-top: 30px;
+    padding-top: 2em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     box-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    margin-bottom: 25px;
+    margin-bottom: 1.5em;
   }
 `;
 
@@ -41,9 +41,9 @@ export const AppLink = styled.a`
   text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
   box-shadow: 2px 2px 4px #000;
   background: var(--red);
-  padding: 14px 14px 0px;
+  padding: 1em 0.5em 0;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 1em;
   transition: all 0.2s;
   &:hover {
     transform: scale(1.2);
@@ -54,5 +54,5 @@ export const AppExtras = styled.div`
   display: flex;
   justify-content: space-between;
   width: 60%;
-  margin-top: 50px;
+  margin-top: 3em;
 `;

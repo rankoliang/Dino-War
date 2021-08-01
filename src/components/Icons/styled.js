@@ -10,9 +10,4 @@ export const IconLink = styled.a`
   &:hover {
     transform: scale(1.2);
   }
-  .music {
-    position: fixed;
-    top: 5px;
-    right: 5px;
-  }
 `;
