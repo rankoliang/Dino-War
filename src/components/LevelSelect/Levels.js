@@ -9,9 +9,9 @@ function Levels(props) {
   //setData will be used when we have local storage setup.
   const [data, setData] = useState({
     beginner: {
-      1: 'Badge1',
-      2: 'Badge1',
-      3: 'Badge1',
+      1: 'Incomplete',
+      2: 'Incomplete',
+      3: 'Incomplete',
       4: 'Incomplete',
       5: 'Incomplete',
       6: 'Incomplete',
@@ -21,9 +21,9 @@ function Levels(props) {
       10: 'Incomplete',
     },
     average: {
-      1: 'Badge2',
-      2: 'Badge2',
-      3: 'Badge2',
+      1: 'Incomplete',
+      2: 'Incomplete',
+      3: 'Incomplete',
       4: 'Incomplete',
       5: 'Incomplete',
       6: 'Incomplete',
@@ -33,9 +33,9 @@ function Levels(props) {
       10: 'Incomplete',
     },
     hard: {
-      1: 'Badge3',
-      2: 'Badge3',
-      3: 'Badge3',
+      1: 'Incomplete',
+      2: 'Incomplete',
+      3: 'Incomplete',
       4: 'Incomplete',
       5: 'Incomplete',
       6: 'Incomplete',
