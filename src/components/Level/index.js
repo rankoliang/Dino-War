@@ -119,7 +119,7 @@ const Level = () => {
       </Battlefield>
       <MainActionButton
         onClick={() => {
-          if (!counting) {
+          if (!counting && !transitioning) {
             // transition to counting state
             setTransitioning(true);
           }

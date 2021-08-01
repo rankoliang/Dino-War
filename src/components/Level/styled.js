@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { StyledCounter } from '../Counter/styled';
 
 export const TeamNames = styled.div`
   width: 100%;
@@ -22,7 +21,6 @@ export const Counters = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   height: 10rem;
-  transition: opacity 0.25s linear;
 
   ${({ counting }) =>
     counting &&
@@ -33,7 +31,8 @@ export const Counters = styled.div`
   ${({ transitioning }) =>
     transitioning &&
     css`
-      opacity: 0%;
+      z-index: 0;
+      transform: translateY(-100%);
       pointer-events: none;
     `}
 `;
