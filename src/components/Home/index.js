@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <App background={pattern}>
-      {rulesShown && <Rules show={rulesShown} />}
+      {rulesShown && <Rules setShown={setRulesShown} />}
       <AppHeader>
         <p className="title">
           Dino-War
