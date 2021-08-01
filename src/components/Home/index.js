@@ -29,13 +29,13 @@ const Home = () => {
           Dino-War
         </p>
         <AppLink
-          href="#/levels/beginner/1"
+          to="/levels/beginner/1"
           title="New Game"
         >
           New Game
         </AppLink>
         <AppLink
-          href="#/levelselect"
+          to="/levelselect"
           title="Level Select"
         >
           Level Select

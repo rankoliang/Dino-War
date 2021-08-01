@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Link } from "react-router-dom";
 
 export const App = styled.div`
   text-align: center;
@@ -34,7 +35,7 @@ export const AppHeader = styled.header`
   }
 `;
 
-export const AppLink = styled.a`
+export const AppLink = styled(Link)`
   color: #fff;
   font-size: calc(1em + 5vmin);
   text-decoration: none;

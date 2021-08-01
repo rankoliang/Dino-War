@@ -4,7 +4,7 @@ import { IconLink } from './styled';
 const SettingsButton = () => {
   return (
     <IconLink
-      href="#"
+      to="/settings"
       title="Settings"
     >
       <FaCog />
