@@ -1,23 +1,13 @@
-import { useEffect } from "react";
 import { Rule } from './styled';
 import { IoMdCloseCircle } from "react-icons/io";
 
-const Rules = () => {
-
-  useEffect(() => {
-    const closeBtn = document.querySelector(".close");
-    const ruleModal = document.querySelector("#modal");
-
-    closeBtn.addEventListener("click", () => {
-      ruleModal.style.display = "none";
-    })
-  }, [])
+const Rules = ({setShown}) => {
 
   return(
     <Rule id="modal">
       <h1>Dino-Battle!</h1>
       <div className="close">
-        <IoMdCloseCircle />
+        <IoMdCloseCircle onClick={() => {setShown(false)}} />
       </div>
 
       <div className="text">
