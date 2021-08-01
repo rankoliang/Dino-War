@@ -1,6 +1,5 @@
 import { ResultIcon, Result } from "./styled";
 import { IoMdRefreshCircle, IoArrowForwardCircleSharp } from "react-icons/io";
-import { FaCog, FaHome, FaListOl } from "react-icons/fa";
 
 const Results = () => {
   return(
@@ -12,7 +11,7 @@ const Results = () => {
       <div className="resultsTop">
         <ResultIcon
           href="#"
-          title="Refresh"
+          title="Retry"
         >
           <IoMdRefreshCircle />
         </ResultIcon>
@@ -25,24 +24,10 @@ const Results = () => {
       </div>
 
       <div className="resultsBtm">
-        <ResultIcon
-          href="#"
-          title="Settings"
-        >
-          <FaCog />
-        </ResultIcon>
-        <ResultIcon
-          href="/"
-          title="Home"
-        >
-          <FaHome />
-        </ResultIcon>
-        <ResultIcon
-          href="#"
-          title="Level Select"
-        >
-          <FaListOl />
-        </ResultIcon>
+        <HomeButton />
+        <LevelButton />
+        <RulesButton />
+        <MusicButton />
       </div>
     </Result>
   )
