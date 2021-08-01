@@ -1,6 +1,5 @@
 import { useState } from "react";
 import trianglify from 'trianglify';
-import LevelButton from "../Icons/LevelButton";
 import RulesButton from "../Icons/RulesButton";
 import { App, AppHeader, AppLink, AppExtras } from './styled';
 
@@ -24,19 +23,19 @@ const Home = () => {
 
   return (
     <App background={pattern}>
-      {rulesShown && <Rules setShown={setRulesShown} />}
+      {rulesShown && <Rules show={rulesShown} />}
       <AppHeader>
         <p className="title">
           Dino-War
         </p>
         <AppLink
-          href="#"
+          href="#/levels/beginner/1"
           title="New Game"
         >
           New Game
         </AppLink>
         <AppLink
-          href="#"
+          href="#/levelselect"
           title="Level Select"
         >
           Level Select

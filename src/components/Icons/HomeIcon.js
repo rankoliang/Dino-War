@@ -6,6 +6,7 @@ const HomeButton = () => {
     <IconLink
       title="Home"
       className="home"
+      href="#/"
     >
       <FaHome />
     </IconLink>
