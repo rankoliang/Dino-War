@@ -5,7 +5,7 @@ import {
   Score,
 } from './styled';
 
-const ScoreResult = ({ score, color, reversed }) => {
+const ScoreResult = ({ score, actualScore, color, reversed }) => {
   return (
     <StyledScoreResult reversed={reversed}>
       <ScoreResultGroup>
@@ -14,7 +14,7 @@ const ScoreResult = ({ score, color, reversed }) => {
       </ScoreResultGroup>
       <ScoreResultGroup color={color}>
         <ScoreResultGroupHeader>Actual Count</ScoreResultGroupHeader>
-        <Score>0</Score>
+        <Score>{actualScore}</Score>
       </ScoreResultGroup>
     </StyledScoreResult>
   );

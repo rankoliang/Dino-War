@@ -25,6 +25,64 @@ const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
 };
 
+// Returns a promise that counts and animates all of the dinos
+const countDinos = (
+  iterationInterval,
+  scale,
+  [teamDinos, setTeamDinos, setActualCount]
+) => {
+  return new Promise((resolve, reject) => {
+    let i = 0;
+
+    const interval = setInterval(() => {
+      if (i < teamDinos.length) {
+        try {
+          const currentDino = teamDinos[i];
+
+          setTeamDinos((dinos) => {
+            return [
+              ...dinos.slice(0, i),
+              {
+                ...currentDino,
+                style: {
+                  ...currentDino.style,
+                  transform: `${currentDino.style.transform} scale(${scale})`,
+                },
+              },
+              ...dinos.slice(i + 1),
+            ];
+          });
+
+          setActualCount((count) => count + currentDino.points);
+
+          i++;
+        } catch (err) {
+          reject(err);
+        }
+      } else {
+        clearInterval(interval);
+        resolve();
+      }
+    }, iterationInterval);
+  });
+};
+
+const useAnimateDinos = (
+  counting,
+  iterationInterval,
+  scale = '120%',
+  ...dinosArgs
+) => {
+  useEffect(() => {
+    if (counting) {
+      dinosArgs.reduce((task, dinoArgs) => {
+        return task.then(() => {
+          return countDinos(iterationInterval, scale, dinoArgs);
+        });
+      }, Promise.resolve());
+    }
+  }, [counting]);
+};
 
 const Level = () => {
   const { difficulty, stage } = useParams();
@@ -35,6 +93,9 @@ const Level = () => {
   const blueCountStore = useReducer(counterReducer, 0);
   const [counting, setCounting] = useState(false);
   const [transitioning, setTransitioning] = useState(null);
+  const [actualRedCount, setActualRedCount] = useState(0);
+  const [actualBlueCount, setActualBlueCount] = useState(0);
+
   const [pattern] = useState(
     trianglify({
       cellSize: 100,
@@ -105,6 +166,13 @@ const Level = () => {
       };
     });
   });
+
+  useAnimateDinos(
+    counting,
+    500,
+    '120%',
+    [redDinos, setRedDinos, setActualRedCount],
+    [blueDinos, setBlueDinos, setActualBlueCount]
   );
 
   return (
@@ -120,9 +188,14 @@ const Level = () => {
       >
         {counting ? (
           <>
-            <ScoreResult score={redCountStore[0]} color="var(--red)" />
+            <ScoreResult
+              score={redCountStore[0]}
+              actualScore={actualRedCount}
+              color="var(--red)"
+            />
             <ScoreResult
               score={blueCountStore[0]}
+              actualScore={actualBlueCount}
               color="var(--blue)"
               reversed
             />
