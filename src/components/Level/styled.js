@@ -123,10 +123,14 @@ export const Dino = styled.svg`
   width: 6em;
   height: 6em;
   margin: 0.5em;
-  transition: transform 0.25s;
+  transition: transform 0.25s, opacity 0.5s;
 
   circle[fill='#edebdc'] {
     display: none;
+  }
+
+  &:hover {
+    opacity: 0.5;
   }
 `;
 

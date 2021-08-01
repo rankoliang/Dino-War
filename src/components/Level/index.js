@@ -25,6 +25,12 @@ const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
 };
 
+const dinoStyle = ({ scaleX, translateX, translateY, scale }) => {
+  return {
+    transform: `scaleX(${scaleX}) translate(${translateX}%, ${translateY}%) scale(${scale}%)`,
+  };
+};
+
 // Returns a promise that counts and animates all of the dinos
 const countDinos = (
   iterationInterval,
@@ -37,23 +43,23 @@ const countDinos = (
     const interval = setInterval(() => {
       if (i < teamDinos.length) {
         try {
-          const currentDino = teamDinos[i];
-
           setTeamDinos((dinos) => {
-            return [
+            const currentDino = teamDinos[i];
+
+            const newDinos = [
               ...dinos.slice(0, i),
               {
                 ...currentDino,
-                style: {
-                  ...currentDino.style,
-                  transform: `${currentDino.style.transform} scale(${scale})`,
-                },
+                translateY: currentDino.translateY - 50,
+                scale,
               },
               ...dinos.slice(i + 1),
             ];
+
+            return newDinos;
           });
 
-          setActualCount((count) => count + currentDino.points);
+          setActualCount((count) => count + teamDinos[i].points);
 
           i++;
         } catch (err) {
@@ -70,7 +76,7 @@ const countDinos = (
 const useAnimateDinos = (
   counting,
   iterationInterval,
-  scale = '120%',
+  scale = 120,
   ...dinosArgs
 ) => {
   useEffect(() => {
@@ -131,17 +137,14 @@ const Level = () => {
     const dinoArray = getRange(redDinoIds);
     shuffle(dinoArray);
     return dinoArray.map((dinoId) => {
+      const dino = dinos[dinoId];
+
       return {
         Component: dinos[dinoId].Component,
-        style: {
-          transform: `
-            scaleX(-1)
-            translate(
-              ${randBetween(-25, 25)}%,
-              ${randBetween(-100, 100)}%
-            )
-          `,
-        },
+        scaleX: dino.skull ? 1 : -1,
+        translateX: randBetween(-25, 25),
+        translateY: randBetween(-50, 50),
+        scale: 100,
         points: legends[redLegendId][dinoId],
       };
     });
@@ -152,16 +155,14 @@ const Level = () => {
     const dinoArray = getRange(blueDinoIds);
     shuffle(dinoArray);
     return dinoArray.map((dinoId) => {
+      const dino = dinos[dinoId];
+
       return {
         Component: dinos[dinoId].Component,
-        style: {
-          transform: `
-            scaleX(-1)
-            translate(
-              ${randBetween(-25, 25)}%,
-              ${randBetween(-100, 100)}%
-            )`,
-        },
+        scaleX: dino.skull ? 1 : -1,
+        translateX: randBetween(-25, 25),
+        translateY: randBetween(-50, 50),
+        scale: 100,
         points: legends[blueLegendId][dinoId],
       };
     });
@@ -169,8 +170,8 @@ const Level = () => {
 
   useAnimateDinos(
     counting,
-    500,
-    '120%',
+    400,
+    140,
     [redDinos, setRedDinos, setActualRedCount],
     [blueDinos, setBlueDinos, setActualBlueCount]
   );
@@ -210,13 +211,13 @@ const Level = () => {
       <Battlefield>
         <Legend color="var(--red)" legend={legends[redLegendId]} />
         <TeamBoard>
-          {redDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
+          {redDinos.map(({ Component, ...dino }, i) => (
+            <Dino as={Component} style={dinoStyle(dino)} key={i} />
           ))}
         </TeamBoard>
         <TeamBoard reversed>
-          {blueDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
+          {blueDinos.map(({ Component, ...dino }, i) => (
+            <Dino as={Component} style={dinoStyle(dino)} key={i} />
           ))}
         </TeamBoard>
         <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
