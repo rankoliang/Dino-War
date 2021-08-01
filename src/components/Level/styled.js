@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 export const TeamNames = styled.div`
   width: 100%;
@@ -39,6 +39,15 @@ export const Counters = styled.div`
     `}
 `;
 
+const pulse = keyframes`
+  0%, 100% {
+    text-shadow: 0 0 0.75em var(--red);
+  }
+  70% {
+    text-shadow: 0 0 0.75em var(--blue);
+  }
+`;
+
 export const MainActionButton = styled.button`
   font-size: 2.5em;
   font-family: inherit;
@@ -47,7 +56,7 @@ export const MainActionButton = styled.button`
   background: #333;
   padding: 0.25em;
   color: white;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease, transform 0.5s ease-out;
   z-index: 0;
 
   &:hover,
@@ -56,6 +65,26 @@ export const MainActionButton = styled.button`
     cursor: pointer;
     background: #222;
   }
+
+  ${({ transitioning }) =>
+    transitioning &&
+    css`
+      transform: translateY(100%);
+    `}
+
+  ${({ counting }) =>
+    counting &&
+    css`
+      animation-duration: 3s;
+      animation-name: ${pulse};
+      animation-iteration-count: infinite;
+
+      &:hover,
+      &:focus {
+        cursor: initial;
+        background: #333;
+      }
+    `}
 `;
 
 export const Battlefield = styled.div`
@@ -104,6 +133,7 @@ export const StyledLevel = styled.main`
   min-width: 61.5em;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   ${({ background }) =>
     background &&
     css`

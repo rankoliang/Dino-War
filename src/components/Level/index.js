@@ -42,7 +42,7 @@ const Level = () => {
       .toString()
   );
 
-  const handleTransitionEnd = (event) => {
+  const handleTransitionEnd = () => {
     setCounting(true);
     setTransitioning(false);
   };
@@ -57,7 +57,8 @@ const Level = () => {
             translate(
               ${randBetween(-25, 25)}%,
               ${randBetween(-100, 100)}%
-            )`,
+            )
+          `,
         },
       };
     })
@@ -91,14 +92,19 @@ const Level = () => {
         counting={counting}
       >
         {counting ? (
-          <ScoreResult score={redCountStore[0]} color="var(--red)" />
+          <>
+            <ScoreResult score={redCountStore[0]} color="var(--red)" />
+            <ScoreResult
+              score={blueCountStore[0]}
+              color="var(--blue)"
+              reversed
+            />
+          </>
         ) : (
-          <Counter store={redCountStore} color="var(--red)" />
-        )}
-        {counting ? (
-          <ScoreResult score={blueCountStore[0]} color="var(--blue)" reversed />
-        ) : (
-          <Counter store={blueCountStore} color="var(--blue)" reversed />
+          <>
+            <Counter store={redCountStore} color="var(--red)" />
+            <Counter store={blueCountStore} color="var(--blue)" reversed />
+          </>
         )}
       </Counters>
       <Battlefield>
@@ -122,8 +128,10 @@ const Level = () => {
             setTransitioning(true);
           }
         }}
+        transitioning={transitioning}
+        counting={counting}
       >
-        Click here to battle!
+        {counting ? 'Counting...' : 'Click here to battle!'}
       </MainActionButton>
     </StyledLevel>
   );
