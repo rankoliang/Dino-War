@@ -123,6 +123,7 @@ export const Dino = styled.svg`
   width: 6em;
   height: 6em;
   margin: 0.5em;
+  transition: transform 0.25s;
 
   circle[fill='#edebdc'] {
     display: none;
