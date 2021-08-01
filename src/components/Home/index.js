@@ -35,9 +35,14 @@ const Home = () => {
         >
           New Game
         </AppLink>
+        <AppLink
+          href="#"
+          title="Level Select"
+        >
+          Level Select
+        </AppLink>
 
         <AppExtras>
-          <LevelButton />
           <RulesButton onClick={rulesClick} />
         </AppExtras>
       </AppHeader>
