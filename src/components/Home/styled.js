@@ -16,7 +16,6 @@ export const AppHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: calc(10px + 2vmin);
   background: rgba(255,255,255,0.3);
   backdrop-filter: blur(4px);
   height: 100%;
@@ -25,7 +24,7 @@ export const AppHeader = styled.header`
     width: 100%;
     background: var(--blue);
     color: #fff;
-    font-size: calc(10px + 15vmin);
+    font-size: calc(2em + 13vmin);
     cursor: default;
     letter-spacing: 2px;
     padding-top: 30px;
@@ -37,7 +36,7 @@ export const AppHeader = styled.header`
 
 export const AppLink = styled.a`
   color: #fff;
-  font-size: calc(10px + 6vmin);
+  font-size: calc(1em + 5vmin);
   text-decoration: none;
   text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
   box-shadow: 2px 2px 4px #000;
@@ -51,26 +50,9 @@ export const AppLink = styled.a`
   }
 `;
 
-export const IconLink = styled.a`
-  color: var(--red);
-  font-size: calc(10px + 8vmin);
-  filter: drop-shadow(1px 1px 1px #000);
-  fill-rule: #fff;
-  cursor: pointer;
-  transition: all 0.2s;
-  &:hover {
-    transform: scale(1.2);
-  }
-`;
-
 export const AppExtras = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 20%;
+  width: 60%;
   margin-top: 50px;
-  & ${AppIcon}:nth-child(2) {
-    display: block;
-    position: relative;
-    top: 20px;
-  }
 `;

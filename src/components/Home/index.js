@@ -1,10 +1,8 @@
 import { useState } from "react";
 import trianglify from 'trianglify';
-import SettingsButton from "../Icons/SettingsButton";
+import LevelButton from "../Icons/LevelButton";
 import RulesButton from "../Icons/RulesButton";
-import MusicButton from "../Icons/MusicButton";
-import { App, AppHeader, AppLink, AppIcon, AppExtras } from './styled';
-import { FaArrowCircleLeft } from "react-icons/fa";
+import { App, AppHeader, AppLink, AppExtras } from './styled';
 
 const Home = () => {
   const [pattern] = useState(
@@ -26,27 +24,20 @@ const Home = () => {
 
   return (
     <App background={pattern}>
+      {rulesShown && <Rules setShown={setRulesShown} />}
       <AppHeader>
-        {rulesShown && <Rules setShown={setRulesShown} />}
         <p className="title">
           Dino-War
         </p>
         <AppLink
           href="#"
-          title="Battle!"
+          title="New Game"
         >
-          Level 1
+          New Game
         </AppLink>
-        <IconLink
-          href="#"
-          title="Previous Level"
-        >
-          <FaArrowCircleLeft />
-        </IconLink>
 
         <AppExtras>
-          <SettingsButton />
-          <MusicButton />
+          <LevelButton />
           <RulesButton onClick={rulesClick} />
         </AppExtras>
       </AppHeader>

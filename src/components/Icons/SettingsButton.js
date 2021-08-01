@@ -1,4 +1,5 @@
 import { FaCog } from "react-icons/fa";
+import { IconLink } from './styled';
 
 const SettingsButton = () => {
   return (

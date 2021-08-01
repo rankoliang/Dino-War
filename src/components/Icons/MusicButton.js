@@ -1,11 +1,11 @@
 import { FaVolumeUp } from "react-icons/fa";
+import { IconLink } from './styled';
 
 const MusicButton = () => {
   return (
     <IconLink
-      title="Rules"
-      className="rules"
-      onClick={rulesClick}
+      title="Music"
+      className="music"
     >
       <FaVolumeUp />
     </IconLink>
