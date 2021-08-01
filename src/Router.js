@@ -1,7 +1,7 @@
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Level from './components/Level';
-import LevelMenu from "./components/LevelMenu";
+import LevelSelect from './components/LevelSelect';
 
 const Router = () => {
   return (
@@ -13,8 +13,8 @@ const Router = () => {
         <Route exact path="/levels/:difficulty">
           <Level />
         </Route>
-        <Route exact path="/levelmenu">
-          <LevelMenu />
+        <Route exact path="/levelselect">
+          <LevelSelect />
         </Route>
       </Switch>
     </HashRouter>
