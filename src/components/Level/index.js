@@ -26,12 +26,7 @@ const randBetween = (low, high) => {
 };
 
 const Level = () => {
-  const { stage } = useParams();
-  const difficulty = window.location.href
-    .split('/')
-    .filter(
-      (name) => name === 'beginner' || name === 'average' || name === 'hard'
-    );
+  const { difficulty, stage } = useParams();
   const level = levels[difficulty][stage];
   const redLegendId = level.legends.red;
   const blueLegendId = level.legends.blue;

@@ -9,13 +9,7 @@ const Router = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/levels/beginner/:stage">
-          <Level />
-        </Route>
-        <Route exact path="/levels/average/:stage">
-          <Level />
-        </Route>
-        <Route exact path="/levels/hard/:stage">
+        <Route exact path="/levels/:difficulty/:stage">
           <Level />
         </Route>
       </Switch>
