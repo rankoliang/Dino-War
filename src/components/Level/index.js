@@ -1,5 +1,12 @@
-import { useReducer, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useReducer, useState } from 'react';
+import { usePattern } from '../../helpers';
+import {
+  useLevel,
+  dinoStyle,
+  useAnimateAndCountDinos,
+  useRandomDinos,
+  useLegend,
+} from './helpers';
 import {
   TeamNames,
   TeamName,
@@ -10,171 +17,34 @@ import {
   Dino,
   TeamBoard,
 } from './styled';
-import { dinos } from '../data/dinos.js';
-import { legends } from '../data/legends.js';
-import { levels } from '../data/levels.js';
 import Legend from '../Legend';
 import Counter from '../Counter';
 import ScoreResult from '../ScoreResult';
 import counterReducer from '../Counter/reducer';
-import trianglify from 'trianglify';
 import './Level.css';
-import shuffle from 'shuffle-array';
-
-const randBetween = (low, high) => {
-  return Math.floor(low + Math.random() * (high - low));
-};
-
-const dinoStyle = ({ scaleX, translateX, translateY, scale }) => {
-  return {
-    transform: `scaleX(${scaleX}) translate(${translateX}%, ${translateY}%) scale(${scale}%)`,
-  };
-};
-
-// Returns a promise that counts and animates all of the dinos
-const countDinos = (
-  iterationInterval,
-  scale,
-  [teamDinos, setTeamDinos, setActualCount]
-) => {
-  return new Promise((resolve, reject) => {
-    let i = 0;
-
-    const interval = setInterval(() => {
-      if (i < teamDinos.length) {
-        try {
-          setTeamDinos((dinos) => {
-            const currentDino = teamDinos[i];
-
-            const newDinos = [
-              ...dinos.slice(0, i),
-              {
-                ...currentDino,
-                translateY: currentDino.translateY - 50,
-                scale,
-              },
-              ...dinos.slice(i + 1),
-            ];
-
-            return newDinos;
-          });
-
-          setActualCount((count) => count + teamDinos[i].points);
-
-          i++;
-        } catch (err) {
-          reject(err);
-        }
-      } else {
-        clearInterval(interval);
-        resolve();
-      }
-    }, iterationInterval);
-  });
-};
-
-const useAnimateDinos = (
-  counting,
-  iterationInterval,
-  scale = 120,
-  ...dinosArgs
-) => {
-  useEffect(() => {
-    if (counting) {
-      dinosArgs.reduce((task, dinoArgs) => {
-        return task.then(() => {
-          return countDinos(iterationInterval, scale, dinoArgs);
-        });
-      }, Promise.resolve());
-    }
-  }, [counting]);
-};
 
 const Level = () => {
-  const { difficulty, stage } = useParams();
-  const level = levels[difficulty][stage];
-  const redLegendId = level.legends.red;
-  const blueLegendId = level.legends.blue;
+  const level = useLevel();
+  const legends = useLegend(level);
+
   const redCountStore = useReducer(counterReducer, 0);
   const blueCountStore = useReducer(counterReducer, 0);
-  const [counting, setCounting] = useState(false);
-  const [transitioning, setTransitioning] = useState(null);
+
+  const pattern = usePattern();
+
+  const [redDinos, setRedDinos] = useRandomDinos(level, 'red');
+  const [blueDinos, setBlueDinos] = useRandomDinos(level, 'blue');
+
   const [actualRedCount, setActualRedCount] = useState(0);
   const [actualBlueCount, setActualBlueCount] = useState(0);
 
-  const [pattern] = useState(
-    trianglify({
-      cellSize: 100,
-      height: 3840,
-      width: 2160,
-      xColors: 'YlGn',
-      colorFunction: trianglify.colorFunctions.shadows(),
-    })
-      .toSVGTree()
-      .toString()
-  );
-
-  const handleTransitionEnd = () => {
-    setCounting(true);
-    setTransitioning(false);
-  };
-
-  const getRange = (dinoIds) => {
-    const { low, high } = level.range;
-
-    const dinoArray = dinoIds.reduce((dinos, id) => {
-      const dinoCount = randBetween(low, high);
-      for (let i = 0; i < dinoCount; i++) {
-        dinos.push(id);
-      }
-      return dinos;
-    }, []);
-    return dinoArray;
-  };
-
-  const [redDinos, setRedDinos] = useState(() => {
-    const redDinoIds = Object.keys(legends[redLegendId]);
-    const dinoArray = getRange(redDinoIds);
-    shuffle(dinoArray);
-    return dinoArray.map((dinoId) => {
-      const dino = dinos[dinoId];
-
-      return {
-        Component: dinos[dinoId].Component,
-        scaleX: dino.skull ? 1 : -1,
-        translateX: randBetween(-25, 25),
-        translateY: randBetween(-50, 50),
-        scale: 100,
-        points: legends[redLegendId][dinoId],
-      };
-    });
-  });
-
-  const [blueDinos, setBlueDinos] = useState(() => {
-    const blueDinoIds = Object.keys(legends[blueLegendId]);
-    const dinoArray = getRange(blueDinoIds);
-    shuffle(dinoArray);
-    return dinoArray.map((dinoId) => {
-      const dino = dinos[dinoId];
-
-      return {
-        Component: dinos[dinoId].Component,
-        scaleX: dino.skull ? 1 : -1,
-        translateX: randBetween(-25, 25),
-        translateY: randBetween(-50, 50),
-        scale: 100,
-        points: legends[blueLegendId][dinoId],
-      };
-    });
-  });
-
-  useAnimateDinos(
-    counting,
-    400,
-    140,
-    [redDinos, setRedDinos, setActualRedCount],
-    [blueDinos, setBlueDinos, setActualBlueCount]
-  );
+  const { counting, transitioning, handleTransitionEnd, triggerCount } =
+    useAnimateAndCountDinos(
+      400,
+      140,
+      [redDinos, setRedDinos, setActualRedCount],
+      [blueDinos, setBlueDinos, setActualBlueCount]
+    );
 
   return (
     <StyledLevel background={pattern}>
@@ -209,7 +79,7 @@ const Level = () => {
         )}
       </Counters>
       <Battlefield>
-        <Legend color="var(--red)" legend={legends[redLegendId]} />
+        <Legend color="var(--red)" legend={legends.red} />
         <TeamBoard>
           {redDinos.map(({ Component, ...dino }, i) => (
             <Dino as={Component} style={dinoStyle(dino)} key={i} />
@@ -220,15 +90,10 @@ const Level = () => {
             <Dino as={Component} style={dinoStyle(dino)} key={i} />
           ))}
         </TeamBoard>
-        <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
+        <Legend color="var(--blue)" reversed legend={legends.blue} />
       </Battlefield>
       <MainActionButton
-        onClick={() => {
-          if (!counting && !transitioning) {
-            // transition to counting state
-            setTransitioning(true);
-          }
-        }}
+        onClick={triggerCount}
         transitioning={transitioning}
         counting={counting}
       >
