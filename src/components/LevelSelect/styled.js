@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledLevel = styled.main`
   display: flex;
@@ -29,11 +30,20 @@ export const ButtonNavigation = styled.div`
   padding: 1em;
 `;
 
-export const IconStyle = styled.a`
+export const IconStyle = styled.div`
   color: #fff;
   display: inline-flex;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
   transition: all 0.2s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+export const AppLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
   &:hover {
     transform: scale(1.2);
   }
@@ -94,6 +104,14 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+`;
+
+export const CardLink = styled(Link)`
+  position: absolute;
+  z-index: 1;
+  width: 10em;
+  height: 10em;
+  text-decoration: none;
 `;
 
 export const LevelTitle = styled.div`

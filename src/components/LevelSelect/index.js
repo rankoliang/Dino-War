@@ -8,6 +8,7 @@ import {
   RightSelection,
   IconStyle,
   ButtonNavigation,
+  AppLink,
 } from './styled';
 import {
   IoMdArrowRoundBack,
@@ -49,12 +50,12 @@ const LevelSelect = () => {
     <StyledLevel background={pattern}>
       <Container>
         <ButtonNavigation>
-          <IconStyle href="#/">
+          <AppLink to="/">
             <IoMdArrowRoundBack size="2.5rem" />
-          </IconStyle>
-          <IconStyle href="#/">
+          </AppLink>
+          <AppLink to="/">
             <FaHome size="2.5rem" />
-          </IconStyle>
+          </AppLink>
         </ButtonNavigation>
         <DifficultySelect>
           <LeftSelection>{leftText}</LeftSelection>
