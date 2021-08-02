@@ -15,15 +15,9 @@ const Home = () => {
       .toSVGTree()
       .toString()
   );
-  const [ rulesShown, setRulesShown ] = useState(false);
-
-  const rulesClick = () => {
-    setRulesShown(true);
-  };
 
   return (
     <App background={pattern}>
-      {rulesShown && <Rules setShown={setRulesShown} />}
       <AppHeader>
         <p className="title">
           Dino-War
@@ -35,14 +29,14 @@ const Home = () => {
           New Game
         </AppLink>
         <AppLink
-          to="/levelselect"
+          to="/levels"
           title="Level Select"
         >
           Level Select
         </AppLink>
 
         <AppExtras>
-          <RulesButton onClick={rulesClick} />
+          <RulesButton />
         </AppExtras>
       </AppHeader>
     </App>

@@ -1,14 +1,14 @@
 import { FaBook } from "react-icons/fa";
-import { IconLink } from './styled';
+import { RulesLink } from './styled';
 
 const RulesButton = () => {
   return (
-    <IconLink
+    <RulesLink
       title="Rules"
       className="rules"
     >
       <FaBook />
-    </IconLink>
+    </RulesLink>
   )
 };
 
