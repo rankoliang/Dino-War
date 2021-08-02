@@ -17,7 +17,7 @@ export const TeamName = styled.h2`
   font-weight: normal;
 `;
 
-export const Counters = styled.div`
+export const StyledCounters = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -86,8 +86,7 @@ export const MainActionButton = styled.button`
       }
     `}
 `;
-
-export const Battlefield = styled.div`
+export const StyledBattlefield = styled.div`
   width: 100%;
   flex: 1;
   justify-self: center;

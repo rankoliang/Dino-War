@@ -77,7 +77,7 @@ export const useAnimateAndCountDinos = (
         });
       }, Promise.resolve());
     }
-  }, [dinosArgs, scale, counting]);
+  }, [iterationInterval, prevCounting, dinosArgs, scale, counting]);
 
   const triggerCount = () => {
     if (!counting && !transitioning) {

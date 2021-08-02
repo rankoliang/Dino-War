@@ -2,24 +2,13 @@ import { useReducer, useState } from 'react';
 import { usePattern } from '../../helpers';
 import {
   useLevel,
-  dinoStyle,
   useAnimateAndCountDinos,
   useRandomDinos,
   useLegend,
 } from './helpers';
-import {
-  TeamNames,
-  TeamName,
-  Counters,
-  MainActionButton,
-  Battlefield,
-  StyledLevel,
-  Dino,
-  TeamBoard,
-} from './styled';
-import Legend from '../Legend';
-import Counter from '../Counter';
-import ScoreResult from '../ScoreResult';
+import { TeamNames, TeamName, MainActionButton, StyledLevel } from './styled';
+import Counters from './components/Counters';
+import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
 import './Level.css';
 
@@ -56,42 +45,19 @@ const Level = () => {
         onTransitionEnd={handleTransitionEnd}
         transitioning={transitioning}
         counting={counting}
-      >
-        {counting ? (
-          <>
-            <ScoreResult
-              score={redCountStore[0]}
-              actualScore={actualRedCount}
-              color="var(--red)"
-            />
-            <ScoreResult
-              score={blueCountStore[0]}
-              actualScore={actualBlueCount}
-              color="var(--blue)"
-              reversed
-            />
-          </>
-        ) : (
-          <>
-            <Counter store={redCountStore} color="var(--red)" />
-            <Counter store={blueCountStore} color="var(--blue)" reversed />
-          </>
-        )}
-      </Counters>
-      <Battlefield>
-        <Legend color="var(--red)" legend={legends.red} />
-        <TeamBoard>
-          {redDinos.map(({ Component, ...dino }, i) => (
-            <Dino as={Component} style={dinoStyle(dino)} key={i} />
-          ))}
-        </TeamBoard>
-        <TeamBoard reversed>
-          {blueDinos.map(({ Component, ...dino }, i) => (
-            <Dino as={Component} style={dinoStyle(dino)} key={i} />
-          ))}
-        </TeamBoard>
-        <Legend color="var(--blue)" reversed legend={legends.blue} />
-      </Battlefield>
+        countStores={{
+          red: redCountStore,
+          blue: blueCountStore,
+        }}
+        actualScores={{
+          red: actualRedCount,
+          blue: actualBlueCount,
+        }}
+      />
+      <Battlefield
+        legends={legends}
+        dinos={{ red: redDinos, blue: blueDinos }}
+      />
       <MainActionButton
         onClick={triggerCount}
         transitioning={transitioning}
