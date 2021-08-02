@@ -1,5 +1,6 @@
 import { useState } from "react";
 import trianglify from 'trianglify';
+import Rules from "../Rules/index";
 import RulesButton from "../Icons/RulesButton";
 import { App, AppHeader, AppLink, AppExtras } from './styled';
 
@@ -17,8 +18,8 @@ const Home = () => {
   );
   const [ rulesShown, setRulesShown ] = useState(false);
 
-  const rulesClick = () => {
-    setRulesShown(true);
+  const setShown = (boo) => {
+    setRulesShown(boo)
   };
 
   return (
@@ -42,7 +43,7 @@ const Home = () => {
         </AppLink>
 
         <AppExtras>
-          <RulesButton onClick={rulesClick} />
+          <RulesButton setShown={setRulesShown} />
         </AppExtras>
       </AppHeader>
     </App>
