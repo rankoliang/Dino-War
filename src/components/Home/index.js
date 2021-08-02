@@ -36,7 +36,7 @@ const Home = () => {
           New Game
         </AppLink>
         <AppLink
-          to="/levelselect"
+          to="/levels"
           title="Level Select"
         >
           Level Select

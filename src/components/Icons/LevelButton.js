@@ -6,7 +6,7 @@ const LevelButton = () => {
     <IconLink
       title="Level Select"
       className="levelSelect"
-      to="/levelselect"
+      to="/levels"
     >
       <FaListOl />
     </IconLink>
