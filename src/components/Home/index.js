@@ -1,5 +1,6 @@
 import { useState } from "react";
 import trianglify from 'trianglify';
+import Rules from "../Rules/index";
 import RulesButton from "../Icons/RulesButton";
 import { App, AppHeader, AppLink, AppExtras } from './styled';
 
@@ -15,9 +16,11 @@ const Home = () => {
       .toSVGTree()
       .toString()
   );
+  const [ rulesShown, setRulesShown ] = useState(false);
 
   return (
     <App background={pattern}>
+      {rulesShown && <Rules setShown={setRulesShown} />}
       <AppHeader>
         <p className="title">
           Dino-War
@@ -36,7 +39,7 @@ const Home = () => {
         </AppLink>
 
         <AppExtras>
-          <RulesButton />
+          <RulesButton setShown={setRulesShown} />
         </AppExtras>
       </AppHeader>
     </App>
