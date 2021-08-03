@@ -18,25 +18,6 @@ export const AppHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
-  font-size: calc(10px + 2vmin);
-  & p {
-    color: white;
-    font-size: calc(10px + 15vmin);
-    cursor: default;
-    letter-spacing: 2px;
-  }
-`;
-
-export const AppLink = styled.a`
-  color: #282c34;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-`;
-=======
   background: rgba(255,255,255,0.3);
   backdrop-filter: blur(4px);
   height: 100%;
@@ -78,4 +59,3 @@ export const AppExtras = styled.div`
   bottom: 10px;
   font-size: calc(0.2em + 0.2vmin);
 `;
->>>>>>> upstream/main

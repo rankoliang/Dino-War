@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-import { App, AppHeader, AppLink } from './styled';
-=======
 import { useState } from "react";
 import trianglify from 'trianglify';
 import RulesButton from "../Icons/RulesButton";
 import { App, AppHeader, AppLink, AppExtras } from './styled';
->>>>>>> upstream/main
 
 const Home = () => {
   const [pattern] = useState(
@@ -23,20 +19,6 @@ const Home = () => {
   return (
     <App background={pattern}>
       <AppHeader>
-<<<<<<< HEAD
-        <p>
-          Dino-War
-        </p>
-        <AppLink
-          href="#"
-        >
-          Level 1
-        </AppLink>
-        <AppLink
-          href="#"
-        >
-          About/How-To/Etc
-=======
         <p className="title">
           Dino-War
         </p>
@@ -51,7 +33,6 @@ const Home = () => {
           title="Level Select"
         >
           Level Select
->>>>>>> upstream/main
         </AppLink>
 
         <AppExtras>
