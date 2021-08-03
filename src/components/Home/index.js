@@ -18,10 +18,6 @@ const Home = () => {
   );
   const [ rulesShown, setRulesShown ] = useState(false);
 
-  const setShown = (boo) => {
-    setRulesShown(boo)
-  };
-
   return (
     <App background={pattern}>
       {rulesShown && <Rules setShown={setRulesShown} />}
