@@ -11,21 +11,25 @@ import {
   Dino,
   TeamBoard,
 } from './styled';
+import { dinos } from '../data/dinos.js';
+import { legends } from '../data/legends.js';
+import { levels } from '../data/levels.js';
 import Legend from '../Legend';
 import Counter from '../Counter';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
-import { ReactComponent as OnePointRedDino } from '../../icons/dinosaurs/red-one-point.svg';
-import { ReactComponent as OnePointBlueDino } from '../../icons/dinosaurs/blue-one-point.svg';
 import './Level.css';
+import shuffle from 'shuffle-array';
 
 const randBetween = (low, high) => {
   return Math.floor(low + Math.random() * (high - low));
 };
 
 const Level = () => {
-  const { difficulty } = useParams();
-
+  const { difficulty, stage } = useParams();
+  const level = levels[difficulty][stage];
+  const redLegendId = level.legends.red;
+  const blueLegendId = level.legends.blue;
   const redCountStore = useReducer(counterReducer, 0);
   const blueCountStore = useReducer(counterReducer, 0);
   const [pattern] = useState(
@@ -40,10 +44,26 @@ const Level = () => {
       .toString()
   );
 
-  const [redDinos] = useState(
-    new Array(10).fill(undefined).map(() => {
+  const getRange = (dinoIds) => {
+    const { low, high } = level.range;
+
+    const dinoArray = dinoIds.reduce((dinos, id) => {
+      const dinoCount = randBetween(low, high);
+      for (let i = 0; i < dinoCount; i++) {
+        dinos.push(id);
+      }
+      return dinos;
+    }, []);
+    return dinoArray;
+  };
+
+  const [redDinos] = useState(() => {
+    const redDinoIds = Object.keys(legends[redLegendId]);
+    const dinoArray = getRange(redDinoIds);
+    shuffle(dinoArray);
+    return dinoArray.map((dinoId) => {
       return {
-        Component: OnePointRedDino,
+        Component: dinos[dinoId].Component,
         style: {
           transform: `
             scaleX(-1)
@@ -53,13 +73,16 @@ const Level = () => {
             )`,
         },
       };
-    })
-  );
+    });
+  });
 
-  const [blueDinos] = useState(
-    new Array(10).fill(undefined).map(() => {
+  const [blueDinos] = useState(() => {
+    const blueDinoIds = Object.keys(legends[blueLegendId]);
+    const dinoArray = getRange(blueDinoIds);
+    shuffle(dinoArray);
+    return dinoArray.map((dinoId) => {
       return {
-        Component: OnePointBlueDino,
+        Component: dinos[dinoId].Component,
         style: {
           transform: `
             scaleX(-1)
@@ -69,9 +92,8 @@ const Level = () => {
             )`,
         },
       };
-    })
-  );
-
+    });
+  });
   return (
     <StyledLevel background={pattern}>
       <VerticalDivider />
@@ -84,7 +106,7 @@ const Level = () => {
         <Counter store={blueCountStore} color="var(--blue)" reversed />
       </Counters>
       <Battlefield>
-        <Legend color="var(--red)" />
+        <Legend color="var(--red)" legend={legends[redLegendId]} />
         <TeamBoard>
           {redDinos.map(({ Component, style }, i) => (
             <Dino as={Component} style={style} key={i} />
@@ -95,7 +117,7 @@ const Level = () => {
             <Dino as={Component} style={style} key={i} />
           ))}
         </TeamBoard>
-        <Legend color="var(--blue)" reversed />
+        <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
       </Battlefield>
       <MainActionButton>Click here to battle!</MainActionButton>
     </StyledLevel>
