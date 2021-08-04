@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ReactComponent as BlueComplete } from '../../icons/badgeCompletion1.svg';
-import { ReactComponent as RedComplete } from '../../icons/badgeCompletion2.svg';
-import { ReactComponent as BlueRedComplete } from '../../icons/badgeCompletion3.svg';
-import { ReactComponent as Incomplete } from '../../icons/badgeNoComplete.svg';
+import { ReactComponent as BlueComplete } from '../../icons/BlueComplete.svg';
+import { ReactComponent as RedComplete } from '../../icons/RedComplete.svg';
+import { ReactComponent as BlueRedComplete } from '../../icons/BlueRedComplete.svg';
+import { ReactComponent as Incomplete } from '../../icons/Incomplete.svg';
 import { LevelContainer, Card, LevelTitle, CardLink } from './styled';
 
 function Levels(props) {
