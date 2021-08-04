@@ -4,19 +4,14 @@ import Counter from '../../Counter';
 
 const Counters = ({
   onTransitionEnd,
-  transitioning,
-  counting,
+  phase,
   countStores,
   actualScores,
   iterationInterval,
 }) => {
   return (
-    <StyledCounters
-      onTransitionEnd={onTransitionEnd}
-      transitioning={transitioning}
-      counting={counting}
-    >
-      {counting ? (
+    <StyledCounters onTransitionEnd={onTransitionEnd} phase={phase}>
+      {phase === 'counting' ? (
         <>
           <ScoreResult
             score={countStores.red[0]}

@@ -6,7 +6,8 @@ import {
   useRandomDinos,
   useLegend,
 } from './helpers';
-import { TeamNames, TeamName, MainActionButton, StyledLevel } from './styled';
+import { TeamNames, TeamName, StyledLevel } from './styled';
+import MainActionButton from './components/MainActionButton';
 import Counters from './components/Counters';
 import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
@@ -27,15 +28,14 @@ const Level = ({ iterationInterval = 350 }) => {
   const [actualRedCount, setActualRedCount] = useState(0);
   const [actualBlueCount, setActualBlueCount] = useState(0);
 
-  const { counting, transitioning, handleTransitionEnd, triggerCount } =
-    useAnimateAndCountDinos(
-      {
-        iterationInterval,
-        scale: 140,
-      },
-      [redDinos, setRedDinos, setActualRedCount],
-      [blueDinos, setBlueDinos, setActualBlueCount]
-    );
+  const { phase, handleTransitionEnd, triggerCount } = useAnimateAndCountDinos(
+    {
+      iterationInterval,
+      scale: 140,
+    },
+    [redDinos, setRedDinos, setActualRedCount],
+    [blueDinos, setBlueDinos, setActualBlueCount]
+  );
 
   return (
     <StyledLevel background={pattern}>
@@ -45,8 +45,7 @@ const Level = ({ iterationInterval = 350 }) => {
       </TeamNames>
       <Counters
         onTransitionEnd={handleTransitionEnd}
-        transitioning={transitioning}
-        counting={counting}
+        phase={phase}
         countStores={{
           red: redCountStore,
           blue: blueCountStore,
@@ -62,13 +61,7 @@ const Level = ({ iterationInterval = 350 }) => {
         dinos={{ red: redDinos, blue: blueDinos }}
         setDinos={{ red: setRedDinos, blue: setBlueDinos }}
       />
-      <MainActionButton
-        onClick={triggerCount}
-        transitioning={transitioning}
-        counting={counting}
-      >
-        {counting ? 'Counting...' : 'Click here to battle!'}
-      </MainActionButton>
+      <MainActionButton onClick={triggerCount} phase={phase} />
     </StyledLevel>
   );
 };

@@ -24,19 +24,20 @@ export const StyledCounters = styled.div`
   height: 10rem;
   transition: transform 0.5s ease-out;
 
-  ${({ counting }) =>
-    counting &&
-    css`
-      justify-content: space-around;
-    `}
-
-  ${({ transitioning }) =>
-    transitioning &&
-    css`
-      z-index: 0;
-      transform: translateY(-100%);
-      pointer-events: none;
-    `}
+  ${({ phase }) => {
+    switch (phase) {
+      case 'counting':
+        return css`
+          justify-content: space-around;
+        `;
+      case 'transitioning':
+        return css`
+          z-index: 0;
+          transform: translateY(-100%);
+          pointer-events: none;
+        `;
+    }
+  }}}
 `;
 
 const pulse = keyframes`
@@ -48,7 +49,7 @@ const pulse = keyframes`
   }
 `;
 
-export const MainActionButton = styled.button`
+export const StyledMainActionButton = styled.button`
   font-size: 2.5em;
   font-family: inherit;
   width: 100%;
@@ -66,25 +67,28 @@ export const MainActionButton = styled.button`
     background: #222;
   }
 
-  ${({ transitioning }) =>
-    transitioning &&
-    css`
-      transform: translateY(100%);
-    `}
+  ${({ phase }) => {
+    switch (phase) {
+      case 'transitioning':
+        return css`
+          transform: translateY(100%);
+        `;
+      case 'counting':
+        return css`
+          animation-duration: 3s;
+          animation-name: ${pulse};
+          animation-iteration-count: infinite;
 
-  ${({ counting }) =>
-    counting &&
-    css`
-      animation-duration: 3s;
-      animation-name: ${pulse};
-      animation-iteration-count: infinite;
+          &:hover,
+          &:focus {
+            cursor: initial;
+            background: #333;
+          }
+        `;
 
-      &:hover,
-      &:focus {
-        cursor: initial;
-        background: #333;
-      }
-    `}
+      default:
+    }
+  }}
 `;
 
 export const StyledBattlefield = styled.div`

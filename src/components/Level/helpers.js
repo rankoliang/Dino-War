@@ -64,36 +64,32 @@ export const useAnimateAndCountDinos = (
   { iterationInterval, scale = 120 },
   ...dinosArgs
 ) => {
-  const [counting, setCounting] = useState(false);
-  const [transitioning, setTransitioning] = useState(null);
+  const [phase, setPhase] = useState('main');
 
-  const prevCounting = usePrevious(counting);
+  const prevPhase = usePrevious(phase);
 
   const handleTransitionEnd = () => {
-    setCounting(true);
-    setTransitioning(false);
+    setPhase('counting');
   };
 
   useEffect(() => {
-    if (counting && prevCounting !== counting) {
+    if (phase === 'transitioning' && prevPhase !== phase) {
       dinosArgs.reduce((task, dinoArgs) => {
         return task.then(() => {
           return countDinos(iterationInterval, scale, dinoArgs);
         });
       }, Promise.resolve());
     }
-  }, [iterationInterval, prevCounting, dinosArgs, scale, counting]);
+  }, [iterationInterval, dinosArgs, scale, phase, prevPhase]);
 
   const triggerCount = () => {
-    if (!counting && !transitioning) {
-      // transition to counting state
-      setTransitioning(true);
+    if (phase === 'main') {
+      setPhase('transitioning');
     }
   };
 
   return {
-    counting,
-    transitioning,
+    phase,
     triggerCount,
     handleTransitionEnd,
   };
