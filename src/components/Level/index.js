@@ -29,8 +29,10 @@ const Level = () => {
 
   const { counting, transitioning, handleTransitionEnd, triggerCount } =
     useAnimateAndCountDinos(
-      400,
-      140,
+      {
+        iterationInterval: 225,
+        scale: 140,
+      },
       [redDinos, setRedDinos, setActualRedCount],
       [blueDinos, setBlueDinos, setActualBlueCount]
     );

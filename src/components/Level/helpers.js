@@ -6,10 +6,8 @@ import { dinos } from '../data/dinos';
 import { randBetween, usePrevious } from '../../helpers';
 import shuffle from 'shuffle-array';
 
-export const dinoStyle = ({ translateX, translateY, scale }) => {
-  return {
-    transform: `translate(${translateX}%, ${translateY}%) scale(${scale}%)`,
-  };
+export const dinoTransform = ({ translateX, translateY, scale }) => {
+  return `translate(${translateX}%, ${translateY}%) scale(${scale}%)`;
 };
 
 export const makeUpdateDino = (setDinos) => (i, callback) => {
@@ -63,8 +61,7 @@ const countDinos = (
 };
 
 export const useAnimateAndCountDinos = (
-  iterationInterval,
-  scale = 120,
+  { iterationInterval, scale = 120 },
   ...dinosArgs
 ) => {
   const [counting, setCounting] = useState(false);

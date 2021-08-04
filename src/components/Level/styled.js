@@ -119,7 +119,7 @@ export const Points = styled.span`
   font-size: 4em;
   opacity: 0;
   transition: opacity 0.5s, transform 0.5s ease-in;
-  animation-duration: 0.6s;
+  animation-duration: 1s;
   animation-name: ${pointChange};
 `;
 

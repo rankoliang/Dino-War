@@ -8,7 +8,7 @@ import {
   DinoWrapper,
   PointsWrapper,
 } from '../styled';
-import { dinoStyle, makeUpdateDino } from '../helpers';
+import { dinoTransform, makeUpdateDino } from '../helpers';
 
 const Dinos = ({ setDinos, dinos }) => {
   const updateDino = useCallback(makeUpdateDino(setDinos), [setDinos]);
@@ -21,11 +21,17 @@ const Dinos = ({ setDinos, dinos }) => {
     };
 
     return (
-      <DinoWrapper style={dinoStyle(dino)} key={i}>
+      <DinoWrapper style={{ transform: dinoTransform(dino) }} key={i}>
         <DinoIcon as={Component} style={{ transform: `scaleX(${scaleX})` }} />
         {animating && (
           <PointsWrapper>
-            <Points onAnimationEnd={handleAnimationEnd} style={dinoStyle(dino)}>
+            <Points
+              onAnimationEnd={handleAnimationEnd}
+              style={{
+                transform: dinoTransform(dino),
+                color: points >= 0 ? 'var(--green)' : 'var(--red)',
+              }}
+            >
               {points}
             </Points>
           </PointsWrapper>
