@@ -57,6 +57,7 @@ const Level = () => {
       <Battlefield
         legends={legends}
         dinos={{ red: redDinos, blue: blueDinos }}
+        setDinos={{ red: setRedDinos, blue: setBlueDinos }}
       />
       <MainActionButton
         onClick={triggerCount}

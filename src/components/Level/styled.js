@@ -86,6 +86,7 @@ export const MainActionButton = styled.button`
       }
     `}
 `;
+
 export const StyledBattlefield = styled.div`
   width: 100%;
   flex: 1;
@@ -100,6 +101,51 @@ export const StyledBattlefield = styled.div`
   z-index: 0;
 `;
 
+const pointChange = keyframes`
+  0% {
+    opacity: 0.8;
+    transform: scaleX(-1) translate(50%, -50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(-1) translate(50%, -150%) scale(0.7);
+  }
+`;
+
+export const Points = styled.span`
+  position: absolute;
+  cursor: inherit;
+  font-size: 4em;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s ease-in;
+  animation-duration: 0.6s;
+  animation-name: ${pointChange};
+`;
+
+export const PointsWrapper = styled.div`
+  position: relative;
+  bottom: 50%;
+`;
+
+export const DinoIcon = styled.svg`
+  width: 6em;
+  height: 6em;
+  margin: 0.5em;
+
+  circle[fill='#edebdc'] {
+    display: none;
+  }
+`;
+
+export const DinoWrapper = styled.div`
+  transition: opacity 0.5s, transform 0.3s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
 export const TeamBoard = styled.div`
   flex: 1;
   align-self: stretch;
@@ -112,25 +158,20 @@ export const TeamBoard = styled.div`
   border-right: 2px solid rgba(0, 0, 0, 0.4);
 
   ${({ reversed }) =>
-    reversed &&
-    css`
-      transform: scaleX(-1);
-    `};
-`;
+    reversed
+      ? css`
+          transform: scaleX(-1);
 
-export const Dino = styled.svg`
-  width: 6em;
-  height: 6em;
-  margin: 0.5em;
-  transition: transform 0.25s, opacity 0.5s;
-
-  circle[fill='#edebdc'] {
-    display: none;
-  }
-
-  &:hover {
-    opacity: 0.5;
-  }
+          ${PointsWrapper} {
+            left: 50%;
+          }
+        `
+      : css`
+          ${PointsWrapper} {
+            transform: scaleX(-1);
+            right: 50%;
+          }
+        `}
 `;
 
 export const StyledLevel = styled.main`

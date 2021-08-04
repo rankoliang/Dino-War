@@ -6,10 +6,24 @@ import { dinos } from '../data/dinos';
 import { randBetween, usePrevious } from '../../helpers';
 import shuffle from 'shuffle-array';
 
-export const dinoStyle = ({ scaleX, translateX, translateY, scale }) => {
+export const dinoStyle = ({ translateX, translateY, scale }) => {
   return {
-    transform: `scaleX(${scaleX}) translate(${translateX}%, ${translateY}%) scale(${scale}%)`,
+    transform: `translate(${translateX}%, ${translateY}%) scale(${scale}%)`,
   };
+};
+
+export const makeUpdateDino = (setDinos) => (i, callback) => {
+  setDinos((dinos) => {
+    const dino = dinos[i];
+
+    const result = [
+      ...dinos.slice(0, i),
+      { ...dino, ...callback(dino) },
+      ...dinos.slice(i + 1),
+    ];
+
+    return result;
+  });
 };
 
 // Returns a promise that counts and animates all of the dinos
@@ -19,25 +33,19 @@ const countDinos = (
   [teamDinos, setTeamDinos, setActualCount]
 ) => {
   return new Promise((resolve, reject) => {
+    const updateDino = makeUpdateDino(setTeamDinos);
+
     let i = 0;
 
     const interval = setInterval(() => {
       if (i < teamDinos.length) {
         try {
-          setTeamDinos((dinos) => {
-            const currentDino = teamDinos[i];
-
-            const newDinos = [
-              ...dinos.slice(0, i),
-              {
-                ...currentDino,
-                translateY: currentDino.translateY - 50,
-                scale,
-              },
-              ...dinos.slice(i + 1),
-            ];
-
-            return newDinos;
+          updateDino(i, (dino) => {
+            return {
+              translateY: dino.translateY - 50,
+              animating: true,
+              scale,
+            };
           });
 
           setActualCount((count) => count + teamDinos[i].points);
