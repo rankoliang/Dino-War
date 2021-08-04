@@ -2,16 +2,22 @@ import { ResultIcon, Result } from "./styled";
 import { IoMdRefreshCircle, IoArrowForwardCircleSharp } from "react-icons/io";
 
 const Results = () => {
+
+  
+
+
   return(
     <Result>
       <h1>Results!</h1>
 
-      <div id="resultScore">[Results go here!]</div>
+      <div id="resultScore">
+        [Results go here!]
+      </div>
 
       <div className="resultsTop">
         <ResultIcon
-          href="#"
           title="Retry"
+          onClick={() => {location.reload()}}
         >
           <IoMdRefreshCircle />
         </ResultIcon>
@@ -27,7 +33,6 @@ const Results = () => {
         <HomeButton />
         <LevelButton />
         <RulesButton />
-        <MusicButton />
       </div>
     </Result>
   )
