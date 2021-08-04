@@ -26,7 +26,7 @@ export const Container = styled.div`
 `;
 export const ButtonNavigation = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 1em;
 `;
 

@@ -50,9 +50,9 @@ const LevelSelect = () => {
     <BackgroundStyle background={pattern}>
       <Container>
         <ButtonNavigation>
-          <AppLink to="/">
+          {/* <AppLink to="/">
             <IoMdArrowRoundBack size="2.5rem" />
-          </AppLink>
+          </AppLink> */}
           <AppLink to="/">
             <FaHome size="2.5rem" />
           </AppLink>
