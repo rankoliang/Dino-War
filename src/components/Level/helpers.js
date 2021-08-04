@@ -38,9 +38,10 @@ const countDinos = (
     const interval = setInterval(() => {
       if (i < teamDinos.length) {
         try {
-          updateDino(i, (dino) => {
+          updateDino(i, () => {
             return {
-              translateY: dino.translateY - 50,
+              translateY: 0,
+              translateX: 0,
               animating: true,
               scale,
             };

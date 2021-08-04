@@ -32,7 +32,7 @@ const Level = ({ iterationInterval = 350 }) => {
   const { phase, handleTransitionEnd, triggerCount } = useAnimateAndCountDinos(
     {
       iterationInterval,
-      scale: 140,
+      scale: 120,
     },
     [redDinos, setRedDinos, setActualRedCount],
     [blueDinos, setBlueDinos, setActualBlueCount]

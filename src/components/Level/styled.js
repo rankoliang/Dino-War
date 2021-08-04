@@ -87,6 +87,14 @@ export const StyledMainActionButton = styled.button`
             background: #333;
           }
         `;
+      case 'results':
+        return css`
+          &:hover,
+          &:focus {
+            cursor: initial;
+            background: #333;
+          }
+        `;
       default:
     }
   }}
