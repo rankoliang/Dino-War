@@ -12,7 +12,7 @@ import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
 import './Level.css';
 
-const Level = () => {
+const Level = ({ iterationInterval = 350 }) => {
   const level = useLevel();
   const legends = useLegend(level);
 
@@ -30,7 +30,7 @@ const Level = () => {
   const { counting, transitioning, handleTransitionEnd, triggerCount } =
     useAnimateAndCountDinos(
       {
-        iterationInterval: 225,
+        iterationInterval,
         scale: 140,
       },
       [redDinos, setRedDinos, setActualRedCount],
@@ -55,6 +55,7 @@ const Level = () => {
           red: actualRedCount,
           blue: actualBlueCount,
         }}
+        iterationInterval={iterationInterval}
       />
       <Battlefield
         legends={legends}

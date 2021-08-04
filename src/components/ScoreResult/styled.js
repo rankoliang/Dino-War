@@ -38,4 +38,22 @@ export const ScoreResultGroupHeader = styled.h4`
 export const Score = styled.div`
   font-size: 3em;
   margin-top: 1rem;
+  transform: scale(1);
+
+  ${({ iterationInterval }) => {
+    return (
+      iterationInterval &&
+      css`
+        transition: transform ${Math.floor(iterationInterval / 4)}ms ease-out;
+      `
+    );
+  }}
+  ${({ transitioning }) => {
+    return (
+      transitioning &&
+      css`
+        transform: scale(1.75);
+      `
+    );
+  }}
 `;

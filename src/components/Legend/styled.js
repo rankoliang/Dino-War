@@ -13,6 +13,17 @@ export const Dino = styled.svg`
   transform: scaleX(-1);
 `;
 
+export const DinoWrapper = styled.div`
+  ${({ skull }) => {
+    return (
+      skull &&
+      css`
+        transform: scaleX(-1);
+      `
+    );
+  }}
+`;
+
 export const LegendGroup = styled.div`
   display: flex;
   justify-content: space-between;

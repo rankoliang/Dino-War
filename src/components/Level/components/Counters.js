@@ -8,6 +8,7 @@ const Counters = ({
   counting,
   countStores,
   actualScores,
+  iterationInterval,
 }) => {
   return (
     <StyledCounters
@@ -20,11 +21,13 @@ const Counters = ({
           <ScoreResult
             score={countStores.red[0]}
             actualScore={actualScores.red}
+            iterationInterval={iterationInterval}
             color="var(--red)"
           />
           <ScoreResult
             score={countStores.blue[0]}
             actualScore={actualScores.blue}
+            iterationInterval={iterationInterval}
             color="var(--blue)"
             reversed
           />
