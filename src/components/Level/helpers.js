@@ -69,11 +69,13 @@ export const useAnimateAndCountDinos = (
   const prevPhase = usePrevious(phase);
 
   const handleTransitionEnd = () => {
-    setPhase('counting');
+    if (phase === 'transitioning' && prevPhase === 'main') {
+      setPhase('counting');
+    }
   };
 
   useEffect(() => {
-    if (phase === 'transitioning' && prevPhase !== phase) {
+    if (phase === 'counting' && prevPhase !== phase) {
       dinosArgs
         .reduce((task, dinoArgs) => {
           return task.then(() => {
