@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const StyledLevel = styled.main`
+export const BackgroundStyle = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;

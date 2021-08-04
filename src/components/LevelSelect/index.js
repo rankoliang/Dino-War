@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  StyledLevel,
+  BackgroundStyle,
   Container,
   DifficultySelect,
   LeftSelection,
@@ -47,7 +47,7 @@ const LevelSelect = () => {
       .toString()
   );
   return (
-    <StyledLevel background={pattern}>
+    <BackgroundStyle background={pattern}>
       <Container>
         <ButtonNavigation>
           <AppLink to="/">
@@ -73,7 +73,7 @@ const LevelSelect = () => {
         </DifficultySelect>
         <Levels selection={centerText} />
       </Container>
-    </StyledLevel>
+    </BackgroundStyle>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ReactComponent as Badge1 } from '../../icons/badgeCompletion1.svg';
-import { ReactComponent as Badge2 } from '../../icons/badgeCompletion2.svg';
-import { ReactComponent as Badge3 } from '../../icons/badgeCompletion3.svg';
+import { ReactComponent as BlueComplete } from '../../icons/badgeCompletion1.svg';
+import { ReactComponent as RedComplete } from '../../icons/badgeCompletion2.svg';
+import { ReactComponent as BlueRedComplete } from '../../icons/badgeCompletion3.svg';
 import { ReactComponent as Incomplete } from '../../icons/badgeNoComplete.svg';
 import { LevelContainer, Card, LevelTitle, CardLink } from './styled';
 
@@ -47,17 +47,17 @@ function Levels(props) {
   });
   const [levels, setLevels] = useState(Object.entries(data[props.selection]));
   const renderStatus = (status) => {
-    if (status === 'Incomplete') {
-      return <Incomplete />;
-    }
-    if (status === 'Badge1') {
-      return <Badge1 />;
-    }
-    if (status === 'Badge2') {
-      return <Badge2 />;
-    }
-    if (status === 'Badge3') {
-      return <Badge3 />;
+    switch (status) {
+      case 'Incomplete':
+        return <Incomplete />;
+      case 'BlueComplete':
+        return <BlueComplete />;
+      case 'RedComplete':
+        return <RedComplete />;
+      case 'BlueRedComplete':
+        return <BlueRedComplete />;
+      default:
+        break;
     }
   };
 
