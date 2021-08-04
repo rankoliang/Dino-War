@@ -11,7 +11,7 @@ const Counters = ({
 }) => {
   return (
     <StyledCounters onTransitionEnd={onTransitionEnd} phase={phase}>
-      {phase === 'counting' ? (
+      {phase === 'counting' || phase === 'results' ? (
         <>
           <ScoreResult
             score={countStores.red[0]}

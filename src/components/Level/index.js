@@ -5,6 +5,7 @@ import {
   useAnimateAndCountDinos,
   useRandomDinos,
   useLegend,
+  useWinner,
 } from './helpers';
 import { TeamNames, TeamName, StyledLevel } from './styled';
 import MainActionButton from './components/MainActionButton';
@@ -37,6 +38,11 @@ const Level = ({ iterationInterval = 350 }) => {
     [blueDinos, setBlueDinos, setActualBlueCount]
   );
 
+  const winner = useWinner(phase, {
+    red: actualRedCount,
+    blue: actualBlueCount,
+  });
+
   return (
     <StyledLevel background={pattern}>
       <TeamNames>
@@ -61,7 +67,7 @@ const Level = ({ iterationInterval = 350 }) => {
         dinos={{ red: redDinos, blue: blueDinos }}
         setDinos={{ red: setRedDinos, blue: setBlueDinos }}
       />
-      <MainActionButton onClick={triggerCount} phase={phase} />
+      <MainActionButton winner={winner} onClick={triggerCount} phase={phase} />
     </StyledLevel>
   );
 };

@@ -26,6 +26,7 @@ export const StyledCounters = styled.div`
 
   ${({ phase }) => {
     switch (phase) {
+      case 'results':
       case 'counting':
         return css`
           justify-content: space-around;
@@ -36,6 +37,7 @@ export const StyledCounters = styled.div`
           transform: translateY(-100%);
           pointer-events: none;
         `;
+      default:
     }
   }}}
 `;
@@ -85,7 +87,6 @@ export const StyledMainActionButton = styled.button`
             background: #333;
           }
         `;
-
       default:
     }
   }}

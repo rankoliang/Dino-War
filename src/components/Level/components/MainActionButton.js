@@ -5,7 +5,7 @@ const MainActionButton = ({ phase, onClick, winner }) => {
   const text = useMemo(() => {
     switch (phase) {
       case 'counting':
-        return 'Counting';
+        return 'Counting...';
       case 'main':
       case 'transitioning':
         return 'Click here to battle!';
@@ -14,7 +14,7 @@ const MainActionButton = ({ phase, onClick, winner }) => {
       default:
         return 'Something went wrong!';
     }
-  }, [phase]);
+  }, [phase, winner]);
 
   return (
     <StyledMainActionButton onClick={onClick} phase={phase}>

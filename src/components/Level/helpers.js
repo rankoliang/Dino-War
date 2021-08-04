@@ -74,11 +74,15 @@ export const useAnimateAndCountDinos = (
 
   useEffect(() => {
     if (phase === 'transitioning' && prevPhase !== phase) {
-      dinosArgs.reduce((task, dinoArgs) => {
-        return task.then(() => {
-          return countDinos(iterationInterval, scale, dinoArgs);
+      dinosArgs
+        .reduce((task, dinoArgs) => {
+          return task.then(() => {
+            return countDinos(iterationInterval, scale, dinoArgs);
+          });
+        }, Promise.resolve())
+        .then(() => {
+          setPhase('results');
         });
-      }, Promise.resolve());
     }
   }, [iterationInterval, dinosArgs, scale, phase, prevPhase]);
 
@@ -153,4 +157,20 @@ export const useRandomDinos = (level, team) => {
 
     return dinoArray;
   });
+};
+
+export const useWinner = (phase, scores) => {
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    if (phase === 'results') {
+      if (scores.red > scores.blue) {
+        setWinner('Red Team');
+      } else if (scores.blue > scores.red) {
+        setWinner('Blue Team');
+      }
+    }
+  }, [phase, scores.red, scores.blue]);
+
+  return winner;
 };
