@@ -7,7 +7,6 @@ import {
   MainActionButton,
   Battlefield,
   StyledLevel,
-  VerticalDivider,
   Dino,
   TeamBoard,
 } from './styled';
@@ -104,7 +103,6 @@ const Level = () => {
           currentLevel={[difficulty, stage]}
         />
       )}
-      <VerticalDivider />
       <TeamNames>
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>

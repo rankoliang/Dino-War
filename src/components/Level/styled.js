@@ -50,7 +50,6 @@ export const Battlefield = styled.div`
   align-items: center;
   padding: 0 3em;
   margin-bottom: 1.5em;
-  z-index: 0;
 `;
 
 export const TeamBoard = styled.div`
@@ -76,14 +75,6 @@ export const Dino = styled.svg`
   circle[fill='#edebdc'] {
     display: none;
   }
-`;
-
-export const VerticalDivider = styled.div`
-  border-left: 3px solid black;
-  position: fixed;
-  left: 50%;
-  height: 100%;
-  transform: translateX(-50%);
 `;
 
 export const StyledLevel = styled.main`

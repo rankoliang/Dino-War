@@ -1,17 +1,24 @@
 import { useState, useEffect } from 'react';
-import { RetryIcon, NextLevelIcon, Result } from './styled';
+import {
+  RetryButton,
+  NextLevelButton,
+  ResultsPrimaryControls,
+  ResultsSecondaryControls,
+  StyledResults,
+  Header,
+  Result,
+} from './styled';
 import HomeButton from '../Icons/HomeIcon';
 import LevelButton from '../Icons/LevelButton';
 import RulesButton from '../Icons/RulesButton';
 import Rules from '../Rules';
-import { IoArrowForwardCircleSharp } from 'react-icons/io5';
-import { IoMdRefreshCircle } from 'react-icons/io';
+import { IoArrowForwardCircleSharp as NextIcon } from 'react-icons/io5';
+import { IoMdRefreshCircle as RefreshIcon } from 'react-icons/io';
 
 const Results = (props) => {
   const { currentLevel, setShown } = props;
   const [difficulty, setDifficulty] = useState();
   const [stage, setStage] = useState();
-  const [userResults, setUserResults] = useState('Placeholder');
   const [rulesShown, setRulesShown] = useState(false);
 
   useEffect(() => {
@@ -32,43 +39,39 @@ const Results = (props) => {
   }, [currentLevel]);
 
   return (
-    <>
+    <StyledResults>
       {rulesShown && <Rules setShown={setRulesShown} />}
-      <Result>
-        <h1>Results!</h1>
+      <Header>Results</Header>
 
-        <div id="resultScore">{userResults}</div>
+      <Result>You win!</Result>
 
-        <div className="resultsTop">
-          <RetryIcon
-            title="Retry"
-            onClick={() => {
-              window.location.reload();
-            }}
-          >
-            <IoMdRefreshCircle />
-          </RetryIcon>
-          <NextLevelIcon
-            href={'#/levels/' + difficulty + '/' + stage}
-            title="Next Level"
-          >
-            <IoArrowForwardCircleSharp
-              onClick={() => {
-                setShown(false);
-              }}
-            />
-          </NextLevelIcon>
-        </div>
+      <ResultsPrimaryControls>
+        <RetryButton
+          title="Retry"
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          <RefreshIcon />
+        </RetryButton>
+        <NextLevelButton
+          to="/levels/beginner/2"
+          title="Next Level"
+          onClick={() => {
+            setShown(false);
+          }}
+        >
+          <NextIcon />
+        </NextLevelButton>
+      </ResultsPrimaryControls>
 
-        <div className="resultsBtm">
-          <HomeButton />
-          <LevelButton />
-          <RulesButton setShown={setRulesShown} />
-        </div>
-      </Result>
-    </>
+      <ResultsSecondaryControls>
+        <HomeButton />
+        <LevelButton />
+        <RulesButton setShown={setRulesShown} />
+      </ResultsSecondaryControls>
+    </StyledResults>
   );
 };
 
 export default Results;
-
