@@ -1,5 +1,12 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+
+const slideIn = keyframes`
+  0% {
+    left: 0%;
+    transform: translate(-100%, -50%);
+  }
+`;
 
 export const StyledResults = styled.div`
   z-index: 1;
@@ -18,6 +25,10 @@ export const StyledResults = styled.div`
   color: #fff;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+
+  animation-duration: 1s;
+  animation-name: ${slideIn};
+  animation-timing-function: ease-out;
 
   * {
     color: #fff;
