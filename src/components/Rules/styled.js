@@ -25,6 +25,7 @@ export const Rule = styled.div`
   }
   h1 {
     margin: 0;
+    text-align: center;
   }
   h2 {
     margin: 1.5em 0 -0.5em;
