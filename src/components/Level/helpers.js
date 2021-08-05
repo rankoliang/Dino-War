@@ -10,13 +10,13 @@ export const dinoTransform = ({ translateX, translateY, scale }) => {
   return `translate(${translateX}%, ${translateY}%) scale(${scale}%)`;
 };
 
-export const makeUpdateDino = (setDinos) => (i, callback) => {
+export const makeSetDino = (setDinos, i) => (callback) => {
   setDinos((dinos) => {
     const dino = dinos[i];
 
     const result = [
       ...dinos.slice(0, i),
-      { ...dino, ...callback(dino) },
+      callback(dino),
       ...dinos.slice(i + 1),
     ];
 
@@ -31,15 +31,16 @@ const countDinos = (
   [teamDinos, setTeamDinos, setActualCount]
 ) => {
   return new Promise((resolve, reject) => {
-    const updateDino = makeUpdateDino(setTeamDinos);
-
     let i = 0;
 
     const interval = setInterval(() => {
+      const setDino = makeSetDino(setTeamDinos, i);
+
       if (i < teamDinos.length) {
         try {
-          updateDino(i, () => {
+          setDino((dino) => {
             return {
+              ...dino,
               translateY: 0,
               translateX: 0,
               animating: true,
