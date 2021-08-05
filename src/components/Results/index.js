@@ -12,7 +12,7 @@ const Results = (props) => {
   const [ stage, setStage ] = useState();
 
   useEffect(() => {
-    if (Number(currentLevel[1]) !== 10) {
+    if (currentLevel[1] !== "10") {
       setDifficulty(currentLevel[0]);
       setStage(Number(currentLevel[1]) + 1)
     } else if (currentLevel[0] === "beginner") {

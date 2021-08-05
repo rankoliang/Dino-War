@@ -15,26 +15,34 @@ export const Result = styled.div`
   color: #fff;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-  & h1 {
+  h1 {
     font-weight: normal;
     margin: 10px auto 40px;
+    text-align: center;
   }
-  & #resultScore {
+  #resultScore {
     display: block;
     width: 100%;
     font-size: calc(10px + 3vmin);
     text-align: center;
     margin-bottom: 40px;
   }
-  & div {
+  div {
     width: 80%;
     font-size: calc(10px + 5vmin);
     margin: 0 auto 20px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
-  & .resultsTop {
+  .resultsTop {
     font-size: calc(10px + 8vmin);
+  }
+  .resultsBtm {
+    font-size: 1em;
+    button, a {
+      color: #fff;
+    }
   }
 `;
 
