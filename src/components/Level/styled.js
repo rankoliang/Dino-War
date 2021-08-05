@@ -152,7 +152,7 @@ export const DinoIcon = styled.svg`
 `;
 
 export const DinoWrapper = styled.div`
-  transition: opacity 0.5s, transform 0.3s;
+  transition: opacity 0.5s, transform 0.2s;
 
   &:hover {
     opacity: 0.5;
