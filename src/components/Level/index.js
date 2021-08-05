@@ -16,6 +16,7 @@ import { legends } from '../data/legends.js';
 import { levels } from '../data/levels.js';
 import Legend from '../Legend';
 import Counter from '../Counter';
+import Results from '../Results';
 import counterReducer from '../Counter/reducer';
 import trianglify from 'trianglify';
 import './Level.css';
@@ -43,6 +44,7 @@ const Level = () => {
       .toSVGTree()
       .toString()
   );
+  const [ resultsShown, setResultsShown ] = useState(false);
 
   const getRange = (dinoIds) => {
     const { low, high } = level.range;
@@ -96,6 +98,12 @@ const Level = () => {
   });
   return (
     <StyledLevel background={pattern}>
+      {resultsShown && 
+        <Results 
+          setShown={setResultsShown} 
+          currentLevel={[difficulty, stage]} 
+        />
+      }
       <VerticalDivider />
       <TeamNames>
         <TeamName background="var(--red)">Red Team</TeamName>
@@ -119,7 +127,11 @@ const Level = () => {
         </TeamBoard>
         <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
       </Battlefield>
-      <MainActionButton>Click here to battle!</MainActionButton>
+      <MainActionButton 
+        onClick={() => {setResultsShown(true)}}
+      >
+        Click here to battle!
+      </MainActionButton>
     </StyledLevel>
   );
 };
