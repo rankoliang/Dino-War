@@ -11,9 +11,9 @@ import {
   Dino,
   TeamBoard,
 } from './styled';
-import { dinos } from '../data/dinos.js';
-import { legends } from '../data/legends.js';
-import { levels } from '../data/levels.js';
+import dinos from '../../data/dinos.js';
+import legends from '../../data/legends.js';
+import levels from '../../data/levels.js';
 import Legend from '../Legend';
 import Counter from '../Counter';
 import Results from '../Results';
@@ -44,7 +44,7 @@ const Level = () => {
       .toSVGTree()
       .toString()
   );
-  const [ resultsShown, setResultsShown ] = useState(false);
+  const [resultsShown, setResultsShown] = useState(false);
 
   const getRange = (dinoIds) => {
     const { low, high } = level.range;
@@ -98,12 +98,12 @@ const Level = () => {
   });
   return (
     <StyledLevel background={pattern}>
-      {resultsShown && 
-        <Results 
-          setShown={setResultsShown} 
-          currentLevel={[difficulty, stage]} 
+      {resultsShown && (
+        <Results
+          setShown={setResultsShown}
+          currentLevel={[difficulty, stage]}
         />
-      }
+      )}
       <VerticalDivider />
       <TeamNames>
         <TeamName background="var(--red)">Red Team</TeamName>
@@ -127,8 +127,10 @@ const Level = () => {
         </TeamBoard>
         <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
       </Battlefield>
-      <MainActionButton 
-        onClick={() => {setResultsShown(true)}}
+      <MainActionButton
+        onClick={() => {
+          setResultsShown(true);
+        }}
       >
         Click here to battle!
       </MainActionButton>

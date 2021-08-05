@@ -1,4 +1,4 @@
-export const levels = {
+const levels = {
   //first three levels are fixed winners.
   beginner: {
     1: {
@@ -308,3 +308,5 @@ export const levels = {
     },
   },
 };
+
+export default levels;
