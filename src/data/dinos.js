@@ -25,11 +25,11 @@ const dinos = {
   8: { id: 8, Component: Dino08 },
   9: { id: 9, Component: Dino09 },
   10: { id: 10, Component: Dino10 },
-  11: { id: 11, Component: Dino11 },
-  12: { id: 12, Component: Dino12 },
-  13: { id: 13, Component: Dino13 },
-  14: { id: 14, Component: Dino14 },
-  15: { id: 15, Component: Dino15 },
+  11: { id: 11, Component: Dino11, skull: true },
+  12: { id: 12, Component: Dino12, skull: true },
+  13: { id: 13, Component: Dino13, skull: true },
+  14: { id: 14, Component: Dino14, skull: true },
+  15: { id: 15, Component: Dino15, skull: true },
 };
 
 export default dinos;
