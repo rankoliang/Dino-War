@@ -48,13 +48,13 @@ Battlefield
    <details>
   <summary>Show Rules</summary>
 
-The goal of the game is to solve the math equation for each side of the battlefield with correct answers giving you the highest possible score earning you a badge.
+The goal of the game is to solve the math equation for each side of the battlefield with correct answers earning you a badge.
 
 ---
 
 **How to Play?**
 
-<p>The player will use the Dinosaur legend on each side of the battlefield to understand the point value of a specific Dinosaur.
+<p>The player will use the dinosaur legend on each side of the battlefield to understand the point value of a specific dinosaur.
 We encourage the player to group like dinosaurs together when adding up the totals. Using your imagination with addition or multiplication will make adding their values easier.</p>
    
 Be careful! The game will add in subtraction dinosaurs as the difficulty increases.
@@ -67,8 +67,8 @@ Be careful! The game will add in subtraction dinosaurs as the difficulty increas
 **How is the score calculated?**
 
 Once the user starts the battle, the game will count each dinosaurs value starting with the red team.
-The computer will place each teams total value under the Actual Count container.
-If atleast one of your answers is equal to the actual count value, you are allowed to proceed to the next level.
+The computer will place each teams total value in the actual count container.
+If atleast one of your answers is equal to the actual count value, you will be allowed to proceed to the next level.
 A perfect game will consist of two correct answers awarding you a badge!
 You can view your earned badge on the level select screen. ~To be implemetned
 
