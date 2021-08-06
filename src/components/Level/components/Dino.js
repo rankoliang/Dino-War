@@ -1,11 +1,9 @@
 import { DinoIcon, Points, DinoWrapper, PointsWrapper } from '../styled';
 import { dinoTransform } from '../helpers';
 
-const Dino = ({
-  dino: { Component, animating, points, scaleX },
-  dino,
-  setDino,
-}) => {
+const Dino = ({ dino, setDino }) => {
+  const { Component, animating, points, scaleX } = dino;
+
   const handleAnimationEnd = () => {
     setDino((dino) => {
       return { ...dino, animating: false };
