@@ -101,3 +101,13 @@ To be written.
 Dino-Wars is a group project made possible by the authors and submitted to the game jam hosted by The Odin Project.
 
 You can see the game jam page <a href="https://itch.io/jam/top-jam-1" target="_blank">here</a>!
+
+<div>Dino1-Dino10 Icons made by <a href="https://www.flaticon.com/packs/dinosaurs-9?k=1627147411949" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+   
+<div>Dino11-Dino15 Icons made by <a href="https://www.flaticon.com/packs/jurassic-3?word=fossil" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+   
+<div>Badge Icons made by <a href="https://www.flaticon.com/free-icon/badge_1498841?related_id=1498841&origin=search" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+   
+<div>Background design created by <a href="https://github.com/qrohlf/trianglify" title="Trianglify">Trianglify</a></div>
+   
+<div>Button Icons used in app designed by: <a href="https://fontawesome.com/" title="FontAwesome">FontAwesome</a> & <a href="https://ionic.io/ionicons" title="Ionic">Ionic</a></div>
