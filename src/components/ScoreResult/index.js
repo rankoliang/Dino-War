@@ -5,7 +5,7 @@ import {
   ScoreResultGroupHeader,
   Score,
 } from './styled';
-import { usePrevious } from '../../helpers';
+import { usePrevious } from '../../globalHelpers';
 
 const ScoreResult = ({
   phase,

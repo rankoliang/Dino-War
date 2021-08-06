@@ -1,5 +1,5 @@
 import { useReducer, useState } from 'react';
-import { usePattern } from '../../helpers';
+import { usePattern } from '../../globalHelpers';
 import {
   useLevel,
   useAnimateAndCountDinos,

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import levels from '../../data/levels';
 import legends from '../../data/legends';
 import dinos from '../../data/dinos';
-import { randBetween, usePrevious } from '../../helpers';
+import { randBetween, usePrevious } from '../../globalHelpers';
 import shuffle from 'shuffle-array';
 
 export const dinoTransform = ({ translateX, translateY, scale }) => {
