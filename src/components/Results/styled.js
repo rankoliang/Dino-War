@@ -26,9 +26,9 @@ export const StyledResults = styled.div`
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 
-  animation-duration: 1s;
+  animation-duration: 0.75s;
   animation-name: ${slideIn};
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-in;
 
   * {
     color: #fff;
@@ -46,6 +46,7 @@ export const Result = styled(Header).attrs({
 })`
   font-size: 4em;
   margin-bottom: 2rem;
+  white-space: nowrap;
 `;
 
 export const ResultsPrimaryControls = styled.div`

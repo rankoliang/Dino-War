@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   RetryButton,
   NextLevelLink,
@@ -14,18 +14,24 @@ import RulesButton from '../Icons/RulesButton';
 import Rules from '../Rules';
 import { IoArrowForwardCircleSharp as NextIcon } from 'react-icons/io5';
 import { IoMdRefreshCircle as RefreshIcon } from 'react-icons/io';
-import { useNextLevel } from './helpers';
+import {
+  useNextLevel,
+  useCountError,
+  maxError,
+  resultMessage,
+} from './helpers';
 
-const Results = ({ setShown }) => {
+const Results = ({ playerCounts, actualScores }) => {
   const [rulesShown, setRulesShown] = useState(false);
   const nextLevel = useNextLevel();
+  const countError = useCountError({ playerCounts, actualScores });
 
   return (
     <StyledResults>
       {rulesShown && <Rules setShown={setRulesShown} />}
       <Header>Results</Header>
 
-      <Result>You win!</Result>
+      <Result>{resultMessage(countError)}</Result>
 
       <ResultsPrimaryControls>
         <RetryButton
@@ -36,13 +42,10 @@ const Results = ({ setShown }) => {
         >
           <RefreshIcon />
         </RetryButton>
-        {nextLevel && (
+        {nextLevel && countError <= maxError && (
           <NextLevelLink
             to={`/levels/${nextLevel.difficulty}/${nextLevel.stage}`}
             title="Next Level"
-            onClick={() => {
-              setShown(false);
-            }}
           >
             <NextIcon />
           </NextLevelLink>

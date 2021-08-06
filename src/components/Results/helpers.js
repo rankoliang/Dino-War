@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import levels from '../../data/levels';
 
+export const maxError = 5;
+
 export const getNextLevel = ({ difficulty, stage }) => {
   const level = levels[difficulty][stage];
 
@@ -23,4 +25,33 @@ export const useNextLevel = () => {
   }, [difficulty, stage]);
 
   return nextLevel;
+};
+
+export const useCountError = ({ playerCounts, actualScores }) => {
+  const [countError, setCountError] = useState(
+    errorMagnitude({ playerCounts, actualScores })
+  );
+
+  useEffect(() => {
+    setCountError(errorMagnitude({ playerCounts, actualScores }));
+  }, [playerCounts, actualScores]);
+
+  return countError;
+};
+
+export const errorMagnitude = ({ playerCounts, actualScores }) => {
+  const redError = Math.abs(actualScores.red - playerCounts.red);
+  const blueError = Math.abs(actualScores.blue - playerCounts.blue);
+
+  return redError + blueError;
+};
+
+export const resultMessage = (countError) => {
+  if (countError === 0) {
+    return 'Perfect!';
+  } else if (countError <= maxError) {
+    return 'Great Job!';
+  } else {
+    return 'Try again!';
+  }
 };

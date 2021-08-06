@@ -13,7 +13,7 @@ import Counters from './components/Counters';
 import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
 import './Level.css';
-import shuffle from 'shuffle-array';
+import Results from '../Results';
 
 const Level = ({ iterationInterval = 350 }) => {
   const level = useLevel();
@@ -46,6 +46,15 @@ const Level = ({ iterationInterval = 350 }) => {
 
   return (
     <StyledLevel background={pattern}>
+      {phase === 'results' && (
+        <Results
+          playerCounts={{
+            red: redCountStore[0],
+            blue: blueCountStore[0],
+          }}
+          actualScores={{ red: actualRedCount, blue: actualBlueCount }}
+        />
+      )}
       <TeamNames>
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>
