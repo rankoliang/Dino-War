@@ -101,6 +101,10 @@ const levels = {
         red: 3,
         blue: 16,
       },
+      next: {
+        difficulty: 'average',
+        stage: '1',
+      },
     },
   },
   average: {
@@ -202,6 +206,10 @@ const levels = {
       legends: {
         red: 19,
         blue: 24,
+      },
+      next: {
+        difficulty: 'hard',
+        stage: '1',
       },
     },
   },
@@ -305,6 +313,7 @@ const levels = {
         red: 30,
         blue: 34,
       },
+      next: null,
     },
   },
 };

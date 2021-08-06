@@ -68,7 +68,7 @@ export const ResultsSecondaryControls = styled.div`
   }
 `;
 
-export const NextLevelButton = styled(Link)`
+export const NextLevelLink = styled(Link)`
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
   margin: auto;
   transition: all 0.2s;
@@ -84,7 +84,7 @@ export const NextLevelButton = styled(Link)`
   }
 `;
 
-export const RetryButton = styled(NextLevelButton).attrs({
+export const RetryButton = styled(NextLevelLink).attrs({
   as: 'button',
 })`
   background: transparent;

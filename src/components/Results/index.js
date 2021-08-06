@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   RetryButton,
-  NextLevelButton,
+  NextLevelLink,
   ResultsPrimaryControls,
   ResultsSecondaryControls,
   StyledResults,
@@ -14,29 +14,11 @@ import RulesButton from '../Icons/RulesButton';
 import Rules from '../Rules';
 import { IoArrowForwardCircleSharp as NextIcon } from 'react-icons/io5';
 import { IoMdRefreshCircle as RefreshIcon } from 'react-icons/io';
+import { useNextLevel } from './helpers';
 
-const Results = (props) => {
-  const { currentLevel, setShown } = props;
-  const [difficulty, setDifficulty] = useState();
-  const [stage, setStage] = useState();
+const Results = ({ setShown }) => {
   const [rulesShown, setRulesShown] = useState(false);
-
-  useEffect(() => {
-    if (currentLevel[1] !== '10') {
-      setDifficulty(currentLevel[0]);
-      setStage(Number(currentLevel[1]) + 1);
-    } else if (currentLevel[0] === 'beginner') {
-      setDifficulty('average');
-      setStage('1');
-    } else if (currentLevel[0] === 'average') {
-      setDifficulty('hard');
-      setStage('1');
-    } else {
-      //end of the game, restarts
-      setDifficulty('beginner');
-      setStage('1');
-    }
-  }, [currentLevel]);
+  const nextLevel = useNextLevel();
 
   return (
     <StyledResults>
@@ -54,15 +36,17 @@ const Results = (props) => {
         >
           <RefreshIcon />
         </RetryButton>
-        <NextLevelButton
-          to="/levels/beginner/2"
-          title="Next Level"
-          onClick={() => {
-            setShown(false);
-          }}
-        >
-          <NextIcon />
-        </NextLevelButton>
+        {nextLevel && (
+          <NextLevelLink
+            to={`/levels/${nextLevel.difficulty}/${nextLevel.stage}`}
+            title="Next Level"
+            onClick={() => {
+              setShown(false);
+            }}
+          >
+            <NextIcon />
+          </NextLevelLink>
+        )}
       </ResultsPrimaryControls>
 
       <ResultsSecondaryControls>
