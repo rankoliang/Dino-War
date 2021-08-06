@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import {
   StyledCounter,
   StyledRexIcon,
@@ -7,17 +6,19 @@ import {
   CounterLabel,
 } from './styled';
 import { ReactComponent as RexIcon } from '../../icons/dinosaur-rex.svg';
-import { counterSet } from './actionCreators';
+import {
+  counterSet,
+  counterIncremented,
+  counterDecremented,
+} from './actionCreators';
 
 const Counter = ({
   store: [count, dispatch],
   color = 'black',
   reversed = false,
 }) => {
-  const inputRef = useRef();
-
   const handleChange = (event) => {
-    dispatch(counterSet(event.target.value));
+    dispatch(counterSet(Number(event.target.value)));
   };
 
   return (
@@ -30,12 +31,11 @@ const Counter = ({
           max="99"
           value={count}
           onChange={handleChange}
-          ref={inputRef}
         />
         <CounterInputs>
           <CounterButton
             onClick={(event) => {
-              inputRef.current.stepUp();
+              dispatch(counterIncremented());
               event.currentTarget.blur();
             }}
           >
@@ -43,7 +43,7 @@ const Counter = ({
           </CounterButton>
           <CounterButton
             onClick={(event) => {
-              inputRef.current.stepDown();
+              dispatch(counterDecremented());
               event.currentTarget.blur();
             }}
           >

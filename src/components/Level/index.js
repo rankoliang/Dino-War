@@ -13,6 +13,7 @@ import Counters from './components/Counters';
 import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
 import './Level.css';
+import shuffle from 'shuffle-array';
 
 const Level = ({ iterationInterval = 350 }) => {
   const level = useLevel();
