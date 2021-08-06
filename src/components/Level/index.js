@@ -55,6 +55,7 @@ const Level = ({ iterationInterval = 350 }) => {
       {rulesShown && <Rules setShown={setRulesShown} />}
       {phase === 'results' && (
         <Results
+          setRulesShown={setRulesShown}
           playerCounts={{
             red: redCountStore[0],
             blue: blueCountStore[0],
