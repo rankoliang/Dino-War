@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { levels } from '../data/levels';
-import { legends } from '../data/legends';
-import { dinos } from '../data/dinos';
+import levels from '../../data/levels';
+import legends from '../../data/legends';
+import dinos from '../../data/dinos';
 import { randBetween, usePrevious } from '../../helpers';
 import shuffle from 'shuffle-array';
 
