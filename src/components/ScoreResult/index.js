@@ -8,6 +8,7 @@ import {
 import { usePrevious } from '../../helpers';
 
 const ScoreResult = ({
+  phase,
   score,
   actualScore,
   color,
@@ -32,7 +33,10 @@ const ScoreResult = ({
   };
 
   return (
-    <StyledScoreResult reversed={reversed}>
+    <StyledScoreResult
+      correct={phase === 'results' && actualScore === score}
+      reversed={reversed}
+    >
       <ScoreResultGroup>
         <ScoreResultGroupHeader>Your Count</ScoreResultGroupHeader>
         <Score>{score}</Score>

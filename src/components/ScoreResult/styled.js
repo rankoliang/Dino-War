@@ -1,4 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const successGlow = keyframes`
+  0%, 100% {
+    box-shadow: 0 0 1rem 2px #219653;
+  }
+
+  50% {
+    box-shadow: 0 0 2.5rem 8px #219653;
+  }
+`;
 
 export const StyledScoreResult = styled.div`
   display: flex;
@@ -7,7 +17,18 @@ export const StyledScoreResult = styled.div`
   margin: 1rem;
   color: white;
   text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.5s;
+  box-shadow: 0 0 1rem 2px rgba(0, 0, 0, 0.25);
+
+  ${({ correct }) =>
+    correct &&
+    css`
+      animation-duration: 3s;
+      animation-name: ${successGlow};
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-out;
+      animation-delay: 1s;
+    `}
 
   ${({ reversed }) => {
     return (
@@ -16,7 +37,7 @@ export const StyledScoreResult = styled.div`
         flex-direction: row-reverse;
       `
     );
-  }}
+  }};
 `;
 
 export const ScoreResultGroup = styled.div`

@@ -14,12 +14,14 @@ const Counters = ({
       {phase === 'counting' || phase === 'results' ? (
         <>
           <ScoreResult
+            phase={phase}
             score={countStores.red[0]}
             actualScore={actualScores.red}
             iterationInterval={iterationInterval}
             color="var(--red)"
           />
           <ScoreResult
+            phase={phase}
             score={countStores.blue[0]}
             actualScore={actualScores.blue}
             iterationInterval={iterationInterval}
