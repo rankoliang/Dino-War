@@ -7,7 +7,15 @@ import {
   useLegend,
   useWinner,
 } from './helpers';
-import { Header, TeamName, StyledLevel, Extras } from './styled';
+import {
+  Header,
+  TeamName,
+  StyledLevel,
+  Extras,
+  LevelIndicator,
+  Difficulty,
+  Stage,
+} from './styled';
 import MainActionButton from './components/MainActionButton';
 import Counters from './components/Counters';
 import Battlefield from './components/Battlefield';
@@ -17,9 +25,11 @@ import Rules from '../Rules';
 import Results from '../Results';
 import HomeLink from '../Icons/HomeIcon';
 import LevelButton from '../Icons/LevelButton';
+import { useParams } from 'react-router-dom';
 import './Level.css';
 
 const Level = ({ iterationInterval = 350 }) => {
+  const { difficulty, stage } = useParams();
   const level = useLevel();
   const legends = useLegend(level);
 
@@ -71,6 +81,10 @@ const Level = ({ iterationInterval = 350 }) => {
           <LevelButton />
           <RulesButton setShown={setRulesShown} />
         </Extras>
+        <LevelIndicator>
+          <Difficulty>{difficulty}</Difficulty>
+          <Stage>Level {stage}</Stage>
+        </LevelIndicator>
       </Header>
       <Counters
         onTransitionEnd={handleTransitionEnd}

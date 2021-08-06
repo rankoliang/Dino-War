@@ -9,7 +9,7 @@ const slideIn = keyframes`
 `;
 
 export const StyledResults = styled.div`
-  z-index: 1;
+  z-index: 2;
   font-size: 1.5rem;
   position: absolute;
   top: 50%;

@@ -218,3 +218,27 @@ export const Extras = styled.div`
     margin: 2px;
   }
 `;
+
+export const LevelIndicator = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: -25%;
+  transform: translate(-50%, 100%);
+  color: white;
+  background: rgba(51, 51, 51, 0.85);
+  padding: 0.5em;
+  padding-bottom: 0.2em;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1.15em;
+`;
+
+export const Difficulty = styled.h3`
+  margin: 0;
+  font-weight: normal;
+`;
+
+export const Stage = styled.h4`
+  margin: 0;
+  font-weight: normal;
+`;
