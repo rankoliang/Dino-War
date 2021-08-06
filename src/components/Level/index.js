@@ -7,13 +7,17 @@ import {
   useLegend,
   useWinner,
 } from './helpers';
-import { TeamNames, TeamName, StyledLevel } from './styled';
+import { Header, TeamName, StyledLevel, Extras } from './styled';
 import MainActionButton from './components/MainActionButton';
 import Counters from './components/Counters';
 import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
-import './Level.css';
+import RulesButton from '../Icons/RulesButton';
+import Rules from '../Rules';
 import Results from '../Results';
+import HomeLink from '../Icons/HomeIcon';
+import LevelButton from '../Icons/LevelButton';
+import './Level.css';
 
 const Level = ({ iterationInterval = 350 }) => {
   const level = useLevel();
@@ -29,6 +33,8 @@ const Level = ({ iterationInterval = 350 }) => {
 
   const [actualRedCount, setActualRedCount] = useState(0);
   const [actualBlueCount, setActualBlueCount] = useState(0);
+
+  const [rulesShown, setRulesShown] = useState(false);
 
   const { phase, handleTransitionEnd, triggerCount } = useAnimateAndCountDinos(
     {
@@ -46,6 +52,7 @@ const Level = ({ iterationInterval = 350 }) => {
 
   return (
     <StyledLevel background={pattern}>
+      {rulesShown && <Rules setShown={setRulesShown} />}
       {phase === 'results' && (
         <Results
           playerCounts={{
@@ -55,10 +62,15 @@ const Level = ({ iterationInterval = 350 }) => {
           actualScores={{ red: actualRedCount, blue: actualBlueCount }}
         />
       )}
-      <TeamNames>
+      <Header>
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>
-      </TeamNames>
+        <Extras>
+          <HomeLink />
+          <LevelButton />
+          <RulesButton setShown={setRulesShown} />
+        </Extras>
+      </Header>
       <Counters
         onTransitionEnd={handleTransitionEnd}
         phase={phase}

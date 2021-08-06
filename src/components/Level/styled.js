@@ -1,9 +1,10 @@
 import styled, { css, keyframes } from 'styled-components';
 
-export const TeamNames = styled.div`
+export const Header = styled.header`
   width: 100%;
   display: flex;
   z-index: 1;
+  position: relative;
 `;
 
 export const TeamName = styled.h2`
@@ -192,6 +193,7 @@ export const StyledLevel = styled.main`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
   ${({ background }) =>
     background &&
     css`
@@ -199,4 +201,20 @@ export const StyledLevel = styled.main`
       background-size: cover;
       min-height: 100%;
     `}
+`;
+
+export const Extras = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  padding: 6px;
+  padding-bottom: 0;
+  background: #333;
+  border-radius: 10px;
+
+  * {
+    margin: 2px;
+  }
 `;
