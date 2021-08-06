@@ -1,5 +1,5 @@
 <h1 align="center">
-   <image src="/src/icons/" width="40%"> 
+   <image src="/src/icons/screenshots/Logo.png" width="60%"> 
 </h1>
 
 <h4 align="center">Dino-War! App uses React, HTML, Styled Components & JavaScript.</h4>
