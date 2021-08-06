@@ -1,61 +1,74 @@
 import { Rule, CloseButton } from './styled';
-import { IoMdCloseCircle } from "react-icons/io";
+import { IoMdCloseCircle } from 'react-icons/io';
 
-const Rules = ({setShown}) => {
-
-  return(
+const Rules = ({ setShown }) => {
+  return (
     <Rule id="modal">
       <h1>Dino-Battle!</h1>
       <CloseButton>
-        <IoMdCloseCircle onClick={() => {setShown(false)}} />
+        <IoMdCloseCircle
+          onClick={() => {
+            setShown(false);
+          }}
+        />
       </CloseButton>
 
       <div className="text">
-        <h2>
-          Basic Rules:
-        </h2>
+        <h2>Basic Rules:</h2>
         <p>
-          The goal of the game is to solve the math equation for each side of the battlefield with correct answers giving you the highest possible score earning you a badge.
+          The goal of the game is to solve the math equation for each side of
+          the battlefield with correct answers earning you a badge.
         </p>
-        <h2>
-          How to Play?
-        </h2>
+        <h2>How to Play?</h2>
         <p>
-          Each level will have a total points goal value that is achievable with a perfect score.
-        </p><p>
-          The player will use the Dinosaur legend on each side of the battlefield to understand the point value of a specific Dinosaur.
-        </p><p>
-          The equation may include Addition, Subtraction & Multiplication.
-        </p><p>
-          The player will adjust the input field to equal each teams total point value.
-        </p><p>
-          Once you are certain of your answer click Battle!
+          The player will use the dinosaur legend on each side of the
+          battlefield to understand the point value of a specific dinosaur.
         </p>
-        <h2>
-          How is the score calculated?
-        </h2>
         <p>
-          The total points goal is the difference between the correct values for Team 1 & Team 2. This number will always be a positive number. ( I.E. Team 1 value is 20, Team 2 value is 30. Total points goal for the level is 10 points. )
-        </p><p>
-          Once the user starts the battle the game will determine if the player was correct with their answer for each teams total points value.
-        </p><p>
-          If the user had an incorrect answer the difference between the correct answer and the users answer will be subtracted from the total points goal value.
-        </p><p>
-          A perfect answer for each teams value will result in the total points goal being reached and a badge will be awarded.
+          We encourage the player to group like dinosaurs together when adding
+          up the totals. Using your imagination with addition or multiplication
+          will make adding their values easier.
         </p>
-        <h2>
-          Difficulty settings
-        </h2>
         <p>
-          Beginner mode: Maximum of three dino types for each team, single digit points goal.
-        </p><p>
-          Average mode: Maximum of four dino types for each team, double digit points goal.
-        </p><p>
-          Hard mode: Maximum of four dino types for each team, double digit points goal, fossil dinos added for subtraction.
+          Be careful! The game will add in subtraction dinosaurs as the
+          difficulty increases.
+        </p>
+        <p>
+          The player will adjust the input field to equal each teams total point
+          value.
+        </p>
+        <p>Once you are certain of your answer click Battle!</p>
+        <h2>How is the score calculated?</h2>
+        <p>
+          Once the user starts the battle, the game will count each dinosaurs
+          value starting with the red team.
+        </p>
+        <p>
+          The computer will place each teams total value in the actual count
+          container.
+        </p>
+        <p>
+          If atleast one of your answers is equal to the actual count value, you
+          will be allowed to proceed to the next level.
+        </p>
+        <p>
+          A perfect game will consist of two correct answers awarding you a
+          badge!
+        </p>
+        <p>
+          You can view your earned badge on the level select screen. ~To be
+          implemetned
+        </p>
+        <h2>Difficulty settings</h2>
+        <p>Beginner mode: Maximum of three dino types for each team.</p>
+        <p>Average mode: Maximum of four dino types for each team.</p>
+        <p>
+          Hard mode: Maximum of four dino types for each team, fossil dinos
+          added for subtraction.
         </p>
       </div>
     </Rule>
-  )
+  );
 };
 
 export default Rules;
