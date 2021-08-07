@@ -7,7 +7,7 @@ import { LevelContainer, Card, LevelTitle, CardLink } from './styled';
 
 function Levels(props) {
   //setData will be used when we have local storage setup.
-  const [data, setData] = useState({
+  const [data] = useState({
     beginner: {
       1: 'Incomplete',
       2: 'Incomplete',
