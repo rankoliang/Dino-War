@@ -12,14 +12,14 @@
   <a href="#credits">Credits</a>
 </p>
 
-### ✨ [Live Preview]()
+### ✨ [Live Preview](https://igni-sign.itch.io/dinowar)
 
 ## Screenshots
 
 <details>
   <summary>Show Image</summary>
 
-<image src="/src/icons/screenshots/"> gif goes here
+<image src="/src/icons/screenshots/demo.gif">
 
 ---
 
