@@ -34,7 +34,6 @@ const MainActionButton = ({ phase, onClick, winner }) => {
       color={color}
       phase={phase}
       onClick={onClick}
-      phase={phase}
     >
       {text}
     </StyledMainActionButton>

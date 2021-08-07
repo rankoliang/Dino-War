@@ -2,11 +2,11 @@ import styled, { css, keyframes } from 'styled-components';
 
 const successGlow = keyframes`
   0%, 100% {
-    box-shadow: 0 0 1rem 2px #219653;
+    box-shadow: 0 0 1rem 2px #32CD32;
   }
 
   50% {
-    box-shadow: 0 0 2.5rem 8px #219653;
+    box-shadow: 0 0 2.5rem 8px #32CD32;
   }
 `;
 
