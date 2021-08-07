@@ -10,11 +10,7 @@ import {
   ButtonNavigation,
   AppLink,
 } from './styled';
-import {
-  IoMdArrowRoundBack,
-  IoIosArrowBack,
-  IoIosArrowForward,
-} from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { FaHome } from 'react-icons/fa';
 import Levels from './Levels';
 import trianglify from 'trianglify';
@@ -50,9 +46,6 @@ const LevelSelect = () => {
     <BackgroundStyle background={pattern}>
       <Container>
         <ButtonNavigation>
-          {/* <AppLink to="/">
-            <IoMdArrowRoundBack size="2.5rem" />
-          </AppLink> */}
           <AppLink to="/">
             <FaHome size="2.5rem" />
           </AppLink>

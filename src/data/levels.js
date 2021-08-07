@@ -1,4 +1,4 @@
-export const levels = {
+const levels = {
   //first three levels are fixed winners.
   beginner: {
     1: {
@@ -100,6 +100,10 @@ export const levels = {
       legends: {
         red: 3,
         blue: 16,
+      },
+      next: {
+        difficulty: 'average',
+        stage: '1',
       },
     },
   },
@@ -203,6 +207,10 @@ export const levels = {
         red: 19,
         blue: 24,
       },
+      next: {
+        difficulty: 'hard',
+        stage: '1',
+      },
     },
   },
   hard: {
@@ -305,6 +313,9 @@ export const levels = {
         red: 30,
         blue: 34,
       },
+      next: null,
     },
   },
 };
+
+export default levels;

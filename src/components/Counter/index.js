@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   StyledCounter,
   StyledRexIcon,
@@ -12,6 +11,7 @@ import {
   counterIncremented,
   counterDecremented,
 } from './actionCreators';
+import { minCount, maxCount } from './reducer';
 
 const Counter = ({
   store: [count, dispatch],
@@ -28,8 +28,8 @@ const Counter = ({
         <StyledRexIcon as={RexIcon} alt="tyrannosaurus rex icon" fill={color} />
         <input
           type="number"
-          min="0"
-          max="99"
+          min={minCount}
+          max={maxCount}
           value={count}
           onChange={handleChange}
         />
