@@ -1,7 +1,20 @@
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { StyledMainActionButton } from '../styled';
 
+const colors = {
+  'Red Team': 'var(--red)',
+  'Blue Team': 'var(--blue)',
+};
+
 const MainActionButton = ({ phase, onClick, winner }) => {
+  const [color, setColor] = useState(colors[winner]);
+
+  useEffect(() => {
+    if (winner) {
+      setColor(colors[winner]);
+    }
+  }, [winner]);
+
   const text = useMemo(() => {
     switch (phase) {
       case 'counting':
@@ -17,7 +30,12 @@ const MainActionButton = ({ phase, onClick, winner }) => {
   }, [phase, winner]);
 
   return (
-    <StyledMainActionButton onClick={onClick} phase={phase}>
+    <StyledMainActionButton
+      color={color}
+      phase={phase}
+      onClick={onClick}
+      phase={phase}
+    >
       {text}
     </StyledMainActionButton>
   );

@@ -60,17 +60,11 @@ export const StyledMainActionButton = styled.button`
   background: #333;
   padding: 0.25em;
   color: white;
-  transition: background-color 0.25s ease, transform 0.5s ease-out;
+  transition: color 0.5s, background-color 0.75s ease, transform 0.5s ease-out,
+    font-size 0.75s;
   z-index: 0;
 
-  &:hover,
-  &:focus {
-    outline: none;
-    cursor: pointer;
-    background: #222;
-  }
-
-  ${({ phase }) => {
+  ${({ phase, color }) => {
     switch (phase) {
       case 'transitioning':
         return css`
@@ -81,22 +75,21 @@ export const StyledMainActionButton = styled.button`
           animation-duration: 3s;
           animation-name: ${pulse};
           animation-iteration-count: infinite;
-
-          &:hover,
-          &:focus {
-            cursor: initial;
-            background: #333;
-          }
         `;
       case 'results':
         return css`
-          &:hover,
-          &:focus {
-            cursor: initial;
-            background: #333;
-          }
+          background-color: ${color ? color : '#333'};
+          font-size: 4em;
         `;
       default:
+        return css`
+          &:hover,
+          &:focus {
+            outline: none;
+            cursor: pointer;
+            background: #222;
+          }
+        `;
     }
   }}
 `;
