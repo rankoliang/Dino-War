@@ -1,9 +1,9 @@
 import { FaBook } from 'react-icons/fa';
-import { RulesLink } from './styled';
+import { RulesBtn } from './styled';
 
 const RulesButton = ({ setShown }) => {
   return (
-    <RulesLink
+    <RulesBtn
       title="Rules"
       className="rules"
       onClick={() => {
@@ -11,7 +11,7 @@ const RulesButton = ({ setShown }) => {
       }}
     >
       <FaBook size="5em" />
-    </RulesLink>
+    </RulesBtn>
   );
 };
 

@@ -1,9 +1,9 @@
 import { FaLink } from 'react-icons/fa';
-import { AttributionButton } from './styled';
+import { AttributionBtn } from './styled';
 
-const RulesButton = ({ setAttributionShown }) => {
+const AttributionButton = ({ setAttributionShown }) => {
   return (
-    <AttributionButton
+    <AttributionBtn
       title="Rules"
       className="rules"
       onClick={() => {
@@ -11,8 +11,8 @@ const RulesButton = ({ setAttributionShown }) => {
       }}
     >
       <FaLink size="5em" />
-    </AttributionButton>
+    </AttributionBtn>
   );
 };
 
-export default RulesButton;
+export default AttributionButton;

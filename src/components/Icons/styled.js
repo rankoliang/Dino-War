@@ -17,7 +17,7 @@ export const IconLink = styled(Link)`
   }
 `;
 
-export const RulesLink = styled.button`
+export const RulesBtn = styled.button`
   background: transparent;
   border: none;
   outline: none;
@@ -34,7 +34,7 @@ export const RulesLink = styled.button`
   }
 `;
 
-export const AttributionButton = styled.button`
+export const AttributionBtn = styled.button`
   background: transparent;
   border: none;
   outline: none;
