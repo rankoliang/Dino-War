@@ -1,137 +1,110 @@
 import { useReducer, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { usePattern } from '../../globalHelpers';
 import {
-  TeamNames,
+  useLevel,
+  useAnimateAndCountDinos,
+  useRandomDinos,
+  useLegend,
+  useWinner,
+} from './helpers';
+import {
+  Header,
   TeamName,
-  Counters,
-  MainActionButton,
-  Battlefield,
   StyledLevel,
-  VerticalDivider,
-  Dino,
-  TeamBoard,
+  Extras,
+  LevelIndicator,
+  Difficulty,
+  Stage,
 } from './styled';
-import { dinos } from '../data/dinos.js';
-import { legends } from '../data/legends.js';
-import { levels } from '../data/levels.js';
-import Legend from '../Legend';
-import Counter from '../Counter';
-import Results from '../Results';
+import MainActionButton from './components/MainActionButton';
+import Counters from './components/Counters';
+import Battlefield from './components/Battlefield';
 import counterReducer from '../Counter/reducer';
-import trianglify from 'trianglify';
+import RulesButton from '../Icons/RulesButton';
+import Rules from '../Rules';
+import Results from '../Results';
+import HomeLink from '../Icons/HomeIcon';
+import LevelButton from '../Icons/LevelButton';
+import { useParams } from 'react-router-dom';
 import './Level.css';
-import shuffle from 'shuffle-array';
 
-const randBetween = (low, high) => {
-  return Math.floor(low + Math.random() * (high - low));
-};
-
-const Level = () => {
+const Level = ({ iterationInterval = 350 }) => {
   const { difficulty, stage } = useParams();
-  const level = levels[difficulty][stage];
-  const redLegendId = level.legends.red;
-  const blueLegendId = level.legends.blue;
+  const level = useLevel();
+  const legends = useLegend(level);
+
   const redCountStore = useReducer(counterReducer, 0);
   const blueCountStore = useReducer(counterReducer, 0);
-  const [pattern] = useState(
-    trianglify({
-      cellSize: 100,
-      height: 3840,
-      width: 2160,
-      xColors: 'YlGn',
-      colorFunction: trianglify.colorFunctions.shadows(),
-    })
-      .toSVGTree()
-      .toString()
+
+  const pattern = usePattern();
+
+  const [redDinos, setRedDinos] = useRandomDinos(level, 'red');
+  const [blueDinos, setBlueDinos] = useRandomDinos(level, 'blue');
+
+  const [actualRedCount, setActualRedCount] = useState(0);
+  const [actualBlueCount, setActualBlueCount] = useState(0);
+
+  const [rulesShown, setRulesShown] = useState(false);
+
+  const { phase, handleTransitionEnd, triggerCount } = useAnimateAndCountDinos(
+    {
+      iterationInterval,
+      scale: 120,
+    },
+    [redDinos, setRedDinos, setActualRedCount],
+    [blueDinos, setBlueDinos, setActualBlueCount]
   );
-  const [ resultsShown, setResultsShown ] = useState(false);
 
-  const getRange = (dinoIds) => {
-    const { low, high } = level.range;
-
-    const dinoArray = dinoIds.reduce((dinos, id) => {
-      const dinoCount = randBetween(low, high);
-      for (let i = 0; i < dinoCount; i++) {
-        dinos.push(id);
-      }
-      return dinos;
-    }, []);
-    return dinoArray;
-  };
-
-  const [redDinos] = useState(() => {
-    const redDinoIds = Object.keys(legends[redLegendId]);
-    const dinoArray = getRange(redDinoIds);
-    shuffle(dinoArray);
-    return dinoArray.map((dinoId) => {
-      return {
-        Component: dinos[dinoId].Component,
-        style: {
-          transform: `
-            scaleX(-1)
-            translate(
-              ${randBetween(-25, 25)}%,
-              ${randBetween(-100, 100)}%
-            )`,
-        },
-      };
-    });
+  const winner = useWinner(phase, {
+    red: actualRedCount,
+    blue: actualBlueCount,
   });
 
-  const [blueDinos] = useState(() => {
-    const blueDinoIds = Object.keys(legends[blueLegendId]);
-    const dinoArray = getRange(blueDinoIds);
-    shuffle(dinoArray);
-    return dinoArray.map((dinoId) => {
-      return {
-        Component: dinos[dinoId].Component,
-        style: {
-          transform: `
-            scaleX(-1)
-            translate(
-              ${randBetween(-25, 25)}%,
-              ${randBetween(-100, 100)}%
-            )`,
-        },
-      };
-    });
-  });
   return (
     <StyledLevel background={pattern}>
-      {resultsShown && 
-        <Results 
-          setShown={setResultsShown} 
-          currentLevel={[difficulty, stage]} 
+      {rulesShown && <Rules setShown={setRulesShown} />}
+      {phase === 'results' && (
+        <Results
+          setRulesShown={setRulesShown}
+          playerCounts={{
+            red: redCountStore[0],
+            blue: blueCountStore[0],
+          }}
+          actualScores={{ red: actualRedCount, blue: actualBlueCount }}
         />
-      }
-      <VerticalDivider />
-      <TeamNames>
+      )}
+      <Header>
         <TeamName background="var(--red)">Red Team</TeamName>
         <TeamName background="var(--blue)">Blue Team</TeamName>
-      </TeamNames>
-      <Counters>
-        <Counter store={redCountStore} color="var(--red)" />
-        <Counter store={blueCountStore} color="var(--blue)" reversed />
-      </Counters>
-      <Battlefield>
-        <Legend color="var(--red)" legend={legends[redLegendId]} />
-        <TeamBoard>
-          {redDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
-          ))}
-        </TeamBoard>
-        <TeamBoard reversed>
-          {blueDinos.map(({ Component, style }, i) => (
-            <Dino as={Component} style={style} key={i} />
-          ))}
-        </TeamBoard>
-        <Legend color="var(--blue)" reversed legend={legends[blueLegendId]} />
-      </Battlefield>
-      <MainActionButton 
-        onClick={() => {setResultsShown(true)}}
-      >
-        Click here to battle!
-      </MainActionButton>
+        <Extras>
+          <HomeLink />
+          <LevelButton />
+          <RulesButton setShown={setRulesShown} />
+        </Extras>
+        <LevelIndicator>
+          <Difficulty>{difficulty}</Difficulty>
+          <Stage>Level {stage}</Stage>
+        </LevelIndicator>
+      </Header>
+      <Counters
+        onTransitionEnd={handleTransitionEnd}
+        phase={phase}
+        countStores={{
+          red: redCountStore,
+          blue: blueCountStore,
+        }}
+        actualScores={{
+          red: actualRedCount,
+          blue: actualBlueCount,
+        }}
+        iterationInterval={iterationInterval}
+      />
+      <Battlefield
+        legends={legends}
+        dinos={{ red: redDinos, blue: blueDinos }}
+        setDinos={{ red: setRedDinos, blue: setBlueDinos }}
+      />
+      <MainActionButton winner={winner} onClick={triggerCount} phase={phase} />
     </StyledLevel>
   );
 };

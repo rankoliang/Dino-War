@@ -10,9 +10,13 @@ const Router = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/levels/:difficulty/:stage">
-          <Level />
-        </Route>
+        <Route
+          exact
+          path="/levels/:difficulty/:stage"
+          render={() => {
+            return <Level key={Date.now()} />;
+          }}
+        ></Route>
         <Route exact path="/levels">
           <LevelSelect />
         </Route>

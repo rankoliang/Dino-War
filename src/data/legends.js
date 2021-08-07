@@ -1,4 +1,4 @@
-export const legends = {
+const legends = {
   //red - 8 different legend boards
   1: {
     1: 1,
@@ -206,3 +206,5 @@ export const legends = {
     15: -1,
   },
 };
+
+export default legends;
