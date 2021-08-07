@@ -59,16 +59,16 @@ We encourage the player to group like dinosaurs together when adding up the tota
    
 Be careful! The game will add in subtraction dinosaurs as the difficulty increases.
    
-<p>The player will adjust the input field to equal each teams total point value.
-   Once you are certain of your answer click Battle!</p>
+<p>The player will adjust the input field to equal each team's total point value.
+   Once you are certain of your answer, click Battle!</p>
 
 ---
 
 **How is the score calculated?**
 
-Once the user starts the battle, the game will count each dinosaurs value starting with the red team.
-The computer will place each teams total value in the actual count container.
-If atleast one of your answers is equal to the actual count value, you will be allowed to proceed to the next level.
+Once the user starts the battle, the game will count each dinosaur's value starting with the red team.
+The computer will place each team's total value in the actual count container.
+If at least one of your answers is equal to the actual count value, you will be allowed to proceed to the next level.
 A perfect game will consist of two correct answers awarding you a badge!
 You can view your earned badge on the level select screen. ~To be implemetned
 
@@ -90,11 +90,11 @@ To be written.
 
 ## Authors
 
-| 👤 **Tim Jackson**                                           | 👤 **savwiley**                                 | 👤 **rankoliang**                                   |
-| ------------------------------------------------------------ | ----------------------------------------------- | --------------------------------------------------- |
-| Github:[@timjacksonm](https://github.com/timjacksonm)        | Github:[@savwiley](https://github.com/savwiley) | Github:[@rankoliang](https://github.com/rankoliang) |
-| Twitter:[@timjacksonmn](https://twitter.com/timjacksonmn)    | N/A                                             | N/A                                                 |
-| LinkedIn:[@timjacksonm](https://linkedin.com/in/timjacksonm) | N/A                                             | N/A                                                 |
+| 👤 **Tim Jackson**                                           | 👤 **savwiley**                                            | 👤 **rankoliang**                                   |
+| ------------------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------------------- |
+| Github:[@timjacksonm](https://github.com/timjacksonm)        | Github:[@savwiley](https://github.com/savwiley)            | Github:[@rankoliang](https://github.com/rankoliang) |
+| Twitter:[@timjacksonmn](https://twitter.com/timjacksonmn)    | Twitter:[@savwiley](https://twitter.com/savwiley)          | N/A                                                 |
+| LinkedIn:[@timjacksonm](https://linkedin.com/in/timjacksonm) | LinkedIn:[@savwiley](https://www.linkedin.com/in/savwiley) | N/A                                                 |
 
 ## Credits
 
