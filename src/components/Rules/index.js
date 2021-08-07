@@ -4,7 +4,7 @@ import { IoMdCloseCircle } from 'react-icons/io';
 const Rules = ({ setShown }) => {
   return (
     <Rule id="modal">
-      <h1>Dino-Battle!</h1>
+      <h1>Dino-War!</h1>
       <CloseButton>
         <IoMdCloseCircle
           onClick={() => {
@@ -37,19 +37,19 @@ const Rules = ({ setShown }) => {
           The player will adjust the input field to equal each teams total point
           value.
         </p>
-        <p>Once you are certain of your answer click Battle!</p>
+        <p>Once you are certain of your answer, click Battle!</p>
         <h2>How is the score calculated?</h2>
         <p>
-          Once the user starts the battle, the game will count each dinosaurs
+          Once the user starts the battle, the game will count each dinosaur's
           value starting with the red team.
         </p>
         <p>
-          The computer will place each teams total value in the actual count
+          The computer will place each team's total value in the actual count
           container.
         </p>
         <p>
-          If atleast one of your answers is equal to the actual count value, you
-          will be allowed to proceed to the next level.
+          If at least one of your answers is equal to the actual count value,
+          you will be allowed to proceed to the next level.
         </p>
         <p>
           A perfect game will consist of two correct answers awarding you a
