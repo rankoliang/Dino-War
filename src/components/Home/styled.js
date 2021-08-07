@@ -53,9 +53,14 @@ export const AppLink = styled(Link)`
 `;
 
 export const AppExtras = styled.div`
-  display: flex;
   position: fixed;
   right: 15px;
   bottom: 10px;
   font-size: 5em;
+  ${({ reversed }) =>
+    reversed &&
+    css`
+      right: unset;
+      left: 15px;
+    `}
 `;

@@ -17,10 +17,36 @@ export const IconLink = styled(Link)`
   }
 `;
 
-export const RulesLink = styled(IconLink).attrs({
-  as: 'button',
-})`
+export const RulesLink = styled.button`
   background: transparent;
   border: none;
   outline: none;
+  filter: drop-shadow(1px 1px 1px #000);
+  fill-rule: #fff;
+  color: var(--red);
+  transition: all 0.2s;
+
+  &:hover {
+    svg {
+      transition: transform 0.2s;
+      transform: scale(1.2);
+    }
+  }
+`;
+
+export const AttributionButton = styled.button`
+  background: transparent;
+  border: none;
+  outline: none;
+  filter: drop-shadow(1px 1px 1px #000);
+  fill-rule: #fff;
+  color: var(--red);
+  transition: all 0.2s;
+
+  &:hover {
+    svg {
+      transition: transform 0.2s;
+      transform: scale(1.2);
+    }
+  }
 `;
