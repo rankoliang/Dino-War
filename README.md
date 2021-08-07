@@ -90,11 +90,11 @@ To be written.
 
 ## Authors
 
-| 👤 **Tim Jackson**                                           | 👤 **Name2** | 👤 **Name3** |
-| ------------------------------------------------------------ | ------------ | ------------ |
-| Github:[@timjacksonm](https://github.com/timjacksonm)        | Content Cell | Content Cell |
-| Twitter:[@timjacksonmn](https://twitter.com/timjacksonmn)    | Content Cell | Content Cell |
-| LinkedIn:[@timjacksonm](https://linkedin.com/in/timjacksonm) | Content Cell | Content Cell |
+| 👤 **Tim Jackson**                                           | 👤 **savwiley**                                 | 👤 **rankoliang**                                   |
+| ------------------------------------------------------------ | ----------------------------------------------- | --------------------------------------------------- |
+| Github:[@timjacksonm](https://github.com/timjacksonm)        | Github:[@savwiley](https://github.com/savwiley) | Github:[@rankoliang](https://github.com/rankoliang) |
+| Twitter:[@timjacksonmn](https://twitter.com/timjacksonmn)    | N/A                                             | N/A                                                 |
+| LinkedIn:[@timjacksonm](https://linkedin.com/in/timjacksonm) | N/A                                             | N/A                                                 |
 
 ## Credits
 
