@@ -89,7 +89,7 @@ Hard mode: Maximum of four dino types for each team, fossil dinos added for subt
 
 </details>
 
-### Development
+## Development
 
 Clone this project and run in the project's directory
 `yarn install`
@@ -108,10 +108,6 @@ and visit [http://localhost:3000](http://localhost:3000).
 | LinkedIn:[@timjacksonm](https://linkedin.com/in/timjacksonm) | LinkedIn:[@savwiley](https://www.linkedin.com/in/savwiley) | N/A                                                 |
 
 ## Credits
-
-Dino-Wars is a group project made possible by the authors and submitted to the game jam hosted by The Odin Project.
-
-You can see the game jam page <a href="https://itch.io/jam/top-jam-1" target="_blank">here</a>!
 
 <div>Dino1-Dino10 Icons made by <a href="https://www.flaticon.com/packs/dinosaurs-9?k=1627147411949" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
    
