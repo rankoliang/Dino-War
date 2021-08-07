@@ -5,14 +5,19 @@
 <h4 align="center">Dino-War! App uses React, HTML, Styled Components & JavaScript.</h4>
 
 <p align="center">
+  <a href="#summary">Summary</a> •
   <a href="#screenshots">Screenshots</a> •
   <a href="#rules">Rules</a> •
-  <a href="#summary">Summary</a> •
+  <a href="#development">Development</a> •
   <a href="#authors">Authors</a> •
   <a href="#credits">Credits</a>
 </p>
 
 ### ✨ [Live Preview](https://igni-sign.itch.io/dinowar)
+
+## Summary
+
+This is a counting game where you count dinosaurs and watch them battle! This game was made for [The Odin Project's first game jam](https://itch.io/jam/top-jam-1), where the theme was edutainment.
 
 ## Screenshots
 
@@ -84,9 +89,15 @@ Hard mode: Maximum of four dino types for each team, fossil dinos added for subt
 
 </details>
 
-## Summary
+### Development
 
-To be written.
+Clone this project and run in the project's directory
+`yarn install`
+to install all of the dependencies.
+
+To run the development server, run the command
+`yarn start`
+and visit [http://localhost:3000](http://localhost:3000).
 
 ## Authors
 
