@@ -13,6 +13,17 @@ export const Dino = styled.svg`
   transform: scaleX(-1);
 `;
 
+export const DinoWrapper = styled.div`
+  ${({ skull }) => {
+    return (
+      skull &&
+      css`
+        transform: scaleX(-1);
+      `
+    );
+  }}
+`;
+
 export const LegendGroup = styled.div`
   display: flex;
   justify-content: space-between;
@@ -35,7 +46,7 @@ export const StyledLegend = styled.div`
   background: ${({ color }) => color || 'black'};
   border-radius: 5px;
   padding: 0 1em;
-  font-size: 2rem;
+  font-size: 2em;
 
   ${({ reversed }) =>
     reversed &&

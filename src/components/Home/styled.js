@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const App = styled.div`
   text-align: center;
@@ -18,7 +18,7 @@ export const AppHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
   height: 100%;
   .title {
@@ -30,8 +30,8 @@ export const AppHeader = styled.header`
     cursor: default;
     letter-spacing: 2px;
     padding-top: 0.3em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin-bottom: 0.2em;
   }
 `;
@@ -40,7 +40,7 @@ export const AppLink = styled(Link)`
   color: #fff;
   font-size: calc(1em + 5vmin);
   text-decoration: none;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
   box-shadow: 2px 2px 4px #000;
   background: var(--red);
   padding: 0.3em 0.5em 0;
@@ -57,5 +57,5 @@ export const AppExtras = styled.div`
   position: fixed;
   right: 15px;
   bottom: 10px;
-  font-size: calc(0.2em + 0.2vmin);
+  font-size: 5em;
 `;

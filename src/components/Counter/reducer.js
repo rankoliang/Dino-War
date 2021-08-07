@@ -1,5 +1,5 @@
-const minCount = 0;
-const maxCount = 99;
+export const minCount = -99;
+export const maxCount = 999;
 
 const reducer = (state, action) => {
   switch (action.type) {
