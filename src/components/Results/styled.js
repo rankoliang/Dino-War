@@ -55,20 +55,6 @@ export const ResultsPrimaryControls = styled.div`
   justify-content: space-around;
 `;
 
-export const ResultsSecondaryControls = styled.div`
-  display: flex;
-  align-items: center;
-
-  * {
-    margin: 0.5rem;
-  }
-
-  svg {
-    width: 2em;
-    height: 2em;
-  }
-`;
-
 export const NextLevelLink = styled(Link)`
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
   margin: auto;
