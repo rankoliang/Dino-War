@@ -58,10 +58,9 @@ export const StyledMainActionButton = styled.button`
   width: 100%;
   border: 0;
   background: #333;
-  padding: 0.25em;
+  padding: 0.5em;
   color: white;
-  transition: color 0.5s, background-color 0.75s ease, transform 0.5s ease-out,
-    font-size 0.75s;
+  transition: color 0.5s, background-color 0.75s ease, transform 0.5s ease-out;
   z-index: 0;
 
   ${({ phase, color }) => {
@@ -79,7 +78,6 @@ export const StyledMainActionButton = styled.button`
       case 'results':
         return css`
           background-color: ${color ? color : '#333'};
-          font-size: 4em;
         `;
       default:
         return css`
