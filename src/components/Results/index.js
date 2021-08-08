@@ -7,9 +7,6 @@ import {
   Header,
   Result,
 } from './styled';
-import HomeButton from '../Icons/HomeIcon';
-import LevelButton from '../Icons/LevelButton';
-import RulesButton from '../Icons/RulesButton';
 import { IoArrowForwardCircleSharp as NextIcon } from 'react-icons/io5';
 import { IoMdRefreshCircle as RefreshIcon } from 'react-icons/io';
 import {
@@ -47,12 +44,6 @@ const Results = ({ playerCounts, actualScores, setRulesShown }) => {
           </NextLevelLink>
         )}
       </ResultsPrimaryControls>
-
-      <ResultsSecondaryControls>
-        <HomeButton />
-        <LevelButton />
-        <RulesButton setShown={setRulesShown} />
-      </ResultsSecondaryControls>
     </StyledResults>
   );
 };
